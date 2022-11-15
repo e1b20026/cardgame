@@ -29,14 +29,32 @@ public class CardGameAuthConfiguration {
     // ハッシュ化されたパスワードを得るには，この授業のbashターミナルで下記のように末尾にユーザ名とパスワードを指定すると良い(要VPN)
     // $ sshrun htpasswd -nbBC 10 user1 p@ss
     // ロールを複数追加することもできる
-    UserDetails user1 = users
-        .username("user1")
-        .password("$2y$10$ngxCDmuVK1TaGchiYQfJ1OAKkd64IH6skGsNw1sLabrTICOHPxC0e")
+    UserDetails kitamoto = users //pass:isdev
+        .username("kitamoto")
+        .password("$2y$10$1K49WFaQQeeI0dTV7DACh.acmMlNVwaAC9r/1s/A9m0wV3F2dmezy")
+        .roles("USER", "MANAGER")
+        .build();
+
+    UserDetails komaki = users //pass:isdev
+        .username("komaki")
+        .password("$2y$10$QlkLFq7fslc13CFiEwHG0e6eVL5YKJkLjKxlRgEemmexmKpAQuZZC")
+        .roles("USER", "MANAGER")
+        .build();
+
+    UserDetails ogawa = users //pass:isdev
+        .username("ogawa")
+        .password("$2y$10$rp80a5F43CzKVOEzycbi/On1wrHjHPmLtGWMq28Q6Qqkvfg5r.xv2")
+        .roles("USER", "MANAGER")
+        .build();
+
+    UserDetails kurokawa = users //pass:isdev
+        .username("kurokawa")
+        .password("$2y$10$khvkOd7vWY0HOjDesG5YPufHOPU8aIkX2ysPfimf55TBnt1DiD9zm")
         .roles("USER", "MANAGER")
         .build();
 
     // 生成したユーザをImMemoryUserDetailsManagerに渡す（いくつでも良い）
-    return new InMemoryUserDetailsManager(user1);
+    return new InMemoryUserDetailsManager(kitamoto,komaki,ogawa,kurokawa);
   }
 
   /**
