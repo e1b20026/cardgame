@@ -7,6 +7,13 @@ public class Member {
 
   // Thymeleafでフィールドを扱うためにはgetter/setterが必ず必要
   // vscodeのソースコード右クリック->ソースアクションでsetter/getterを簡単に追加できる
+
+  public Member(int id, String userName) {
+    this.id = id;
+    this.userName = userName;
+  }
+
+
   public String getUserName() {
     return userName;
   }

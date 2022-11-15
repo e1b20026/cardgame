@@ -1,8 +1,10 @@
 package playingcards.cardgame.model;
 
-import org.apache.ibatis.annotations.Insert;
+import java.util.ArrayList;
+
+//import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
+//import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -10,8 +12,11 @@ import org.apache.ibatis.annotations.Update;
 public interface MemberMapper {
 
   @Select("SELECT * from member")
-  Member selectAllMember();
+  ArrayList<Member> selectAllMember();
 
-  @Update("UPDATE FRUIT SET NAME=#{name}, PRICE=#{price} WHERE ID = #{id}")
+  @Select("SELECT * from member where userName = #{name}")
+  Member selectNameMember(String name);
+
+  @Update("UPDATE member SET exist = true")
   void updateByName(Member member);
 }
