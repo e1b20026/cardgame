@@ -18,7 +18,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CardgameController {
 
   @GetMapping("/room1")
-  public String room1() {
+  public String room1(ModelMap model, Principal prin) {
+
+    Member member = new member(userName);
+    // update
+    MemberMapper.updateByName(member);
+    // フルーツリストを取得
+    ArrayList<member> members2 = MemberMapper.selectAllmember();
+    model.addAttribute("members2", members2);
     return "room1.html";
   }
 }
