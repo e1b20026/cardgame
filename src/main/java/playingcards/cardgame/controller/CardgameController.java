@@ -2,7 +2,6 @@ package playingcards.cardgame.controller;
 
 import playingcards.cardgame.model.*;
 
-
 import java.security.Principal;
 import java.util.ArrayList;
 
@@ -18,8 +17,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
+import java.io.IOException;
 
-
+import playingcards.cardgame.service.*;
 
 /**
  * Sample21Controller
@@ -33,6 +33,9 @@ public class CardgameController {
   @Autowired
   MemberMapper membermapper;
 
+  @Autowired
+  private AsyncCard LoginUser;
+
   private final Logger logger = LoggerFactory.getLogger(CardgameController.class);
 
   @GetMapping("/room1")
@@ -43,17 +46,20 @@ public class CardgameController {
     // update
     membermapper.updateByName(member);
 
-    //model.addAttribute("members", members2);
+    // model.addAttribute("members", members2);
     return "room1.html";
   }
-
 
   @GetMapping("/exist")
   public SseEmitter pushFruit() {
     // infoレベルでログを出力する
     logger.info("exist");
     final SseEmitter sseEmitter = new SseEmitter();
-    this.ac56.pushFruit(sseEmitter);
+    try {
+      this.LoginUser.loginUser(sseEmitter);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
     return sseEmitter;
 
   }
