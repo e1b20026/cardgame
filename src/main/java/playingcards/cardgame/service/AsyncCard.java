@@ -19,6 +19,7 @@ public class AsyncCard {
   private final Logger logger = LoggerFactory.getLogger(AsyncCard.class);
 
   @Autowired
+  private 
 
 
   @Async
