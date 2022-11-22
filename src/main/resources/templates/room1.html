@@ -9,12 +9,13 @@
       var sse = new EventSource('/Room/exist');
       sse.onmessage = function (event) {
         console.log(event.data);
-        var p1 = document.getElementById("p1");//操作対象のDOMを取得
-        p1.appendChild(document.createTextNode(event.data));//ノードの追加
-        p1.appendChild(document.createElement('br'));//brタグの追加
-        if (event.data.equals("2")) {
-          var p2 = document.getElementById("p2");
-          p2.appendChild(document.createTextNode(event.data));
+        if (event.data == 2) {
+          document.getElementById("room_complete").textContent = "round1"
+          document.getElementById("room_incomplete").textContent = "現在の参加人数は：" + event.data;
+        }
+        else {
+          //操作対象のDOMを取得
+          document.getElementById("room_incomplete").textContent = "現在の参加人数は：" + event.data;//ノードの追加
         }
       }
     }
@@ -24,8 +25,8 @@
 
 <body>
   ここはroom1です
-  <div id="p1"></div>
-  <h1 id="p2"></h1>
+  <h1 id="room_incomplete"></h1>
+  <a id="room_complete" href="/Room/round1"></a>
 </body>
 
 </html>

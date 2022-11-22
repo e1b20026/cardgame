@@ -50,6 +50,11 @@ public class CardgameController {
     return "room1.html";
   }
 
+  @GetMapping("/round1")
+  public String round1() {
+    return "round1.html";
+  }
+
   @GetMapping("/exist")
   public SseEmitter pushFruit() {
     // infoレベルでログを出力する
