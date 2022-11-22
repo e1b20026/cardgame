@@ -51,9 +51,7 @@ public class CardgameController {
   }
 
   @GetMapping("/round1")
-  public String round1(ModelMap model) {
-
-    // model.addAttribute("members", members2);
+  public String round1() {
     return "round1.html";
   }
 
