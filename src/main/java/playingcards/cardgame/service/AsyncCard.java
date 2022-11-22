@@ -30,11 +30,9 @@ public class AsyncCard {
       for (Member member : members) {
         if (member.getExist() == true) {
           count++;
-          emitter.send(count);
-        } else {
-          logger.info("nothing");
         }
       }
+          emitter.send(count);
       // sendによってcountがブラウザにpushされる
       // 1秒STOP
       TimeUnit.SECONDS.sleep(1);
