@@ -12,6 +12,10 @@
         var p1 = document.getElementById("p1");//操作対象のDOMを取得
         p1.appendChild(document.createTextNode(event.data));//ノードの追加
         p1.appendChild(document.createElement('br'));//brタグの追加
+        if (event.data.equals("2")) {
+          var p2 = document.getElementById("p2");
+          p2.appendChild(document.createTextNode(event.data));
+        }
       }
     }
 
@@ -20,6 +24,8 @@
 
 <body>
   ここはroom1です
+  <div id="p1"></div>
+  <h1 id="p2"></h1>
 </body>
 
 </html>

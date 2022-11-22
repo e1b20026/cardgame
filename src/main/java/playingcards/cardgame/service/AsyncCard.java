@@ -11,7 +11,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
-
+import playingcards.cardgame.model.*;
 
 @Service
 public class AsyncCard {
@@ -19,23 +19,20 @@ public class AsyncCard {
   private final Logger logger = LoggerFactory.getLogger(AsyncCard.class);
 
   @Autowired
-  private 
-
+  MemberMapper membermapper;
 
   @Async
-  public void result(SseEmitter emitter) throws IOException {
-    ArrayList<Match> matches;
+  public void loginUser(SseEmitter emitter) throws IOException {
+    ArrayList<Member> members;
     try {
-      matches = matchMapper.selectAllByMatch();
-      for (Match match : matches) {
-        if (match.getIsActive() == true) {
-          emitter.send("id: " + match.getId() + " User1: " + match.getUser1() + " User2: " + match.getUser2()
-              + " User1Hand: " + match.getUser1Hand() + " User2Hand: " + match.getUser2Hand());
-          dbUpdated = false;
-        } else {
-          logger.info("nothing");
+      members = membermapper.selectTrueMember();
+      int count = 0;
+      for (Member member : members) {
+        if (member.getExist() == true) {
+          count++;
         }
       }
+          emitter.send(count);
       // sendによってcountがブラウザにpushされる
       // 1秒STOP
       TimeUnit.SECONDS.sleep(1);

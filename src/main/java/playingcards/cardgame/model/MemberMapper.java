@@ -17,6 +17,9 @@ public interface MemberMapper {
   @Select("SELECT * from member where userName = #{name}")
   Member selectNameMember(String name);
 
+  @Select("SELECT * from member where exist = true")
+  ArrayList<Member> selectTrueMember();
+
   @Update("UPDATE member SET exist = true WHERE id = #{id}")
   void updateByName(Member member);
 }
