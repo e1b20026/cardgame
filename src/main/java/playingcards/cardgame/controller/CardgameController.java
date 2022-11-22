@@ -4,8 +4,10 @@ import playingcards.cardgame.model.*;
 
 
 import java.security.Principal;
-//import java.util.ArrayList;
+import java.util.ArrayList;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
+
 
 
 /**
@@ -29,6 +33,8 @@ public class CardgameController {
   @Autowired
   MemberMapper membermapper;
 
+  private final Logger logger = LoggerFactory.getLogger(CardgameController.class);
+
   @GetMapping("/room1")
   public String room1(ModelMap model, Principal prin) {
 
@@ -39,5 +45,16 @@ public class CardgameController {
 
     //model.addAttribute("members", members2);
     return "room1.html";
+  }
+
+
+  @GetMapping("/exist")
+  public SseEmitter pushFruit() {
+    // infoレベルでログを出力する
+    logger.info("exist");
+    final SseEmitter sseEmitter = new SseEmitter();
+    this.ac56.pushFruit(sseEmitter);
+    return sseEmitter;
+
   }
 }

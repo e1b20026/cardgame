@@ -4,6 +4,18 @@
 <head>
   <meta charset="utf-8">
   <title>Cardgame</title>
+  <script>
+    window.onload = function () {
+      var sse = new EventSource('/Room/exist');
+      sse.onmessage = function (event) {
+        console.log(event.data);
+        var p1 = document.getElementById("p1");//操作対象のDOMを取得
+        p1.appendChild(document.createTextNode(event.data));//ノードの追加
+        p1.appendChild(document.createElement('br'));//brタグの追加
+      }
+    }
+
+  </script>
 </head>
 
 <body>
