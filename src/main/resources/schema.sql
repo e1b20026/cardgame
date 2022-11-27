@@ -6,8 +6,7 @@ CREATE TABLE member (
 
 CREATE TABLE trump (
     id IDENTITY,
-    suit VARCHAR NOT NULL ,
+    suit VARCHAR NOT NULL,
     number INT NOT NULL,
-    place boolean NOT NULL,
-    PRIMARY KEY (suit, number)
+    place boolean NOT NULL
 );
