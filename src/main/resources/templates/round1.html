@@ -1,1 +1,19 @@
-ゲーム開始です
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>Cardgame</title>
+</head>
+
+<body>
+  round1です
+  <div th:if="${hand1}">
+    [[${hand1.suit}]], [[${hand1.number}]]
+  </div>
+  <div th:if="${hand2}">
+    [[${hand2.suit}]], [[${hand2.number}]]
+  </div>
+</body>
+
+</html>
