@@ -5,6 +5,7 @@ import playingcards.cardgame.model.*;
 import java.security.Principal;
 import java.util.ArrayList;
 
+import java.util.Random;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,9 @@ import playingcards.cardgame.service.*;
 public class CardgameController {
 
   @Autowired
+  TrumpMapper trumpmapper;
+  
+  @Autowired
   MemberMapper membermapper;
 
   @Autowired
@@ -51,7 +55,10 @@ public class CardgameController {
   }
 
   @GetMapping("/round1")
-  public String round1() {
+  public String round1(ModelMap model) {
+      Random random = new Random();
+      int num1 = random.nextInt(52) + 1;
+      int num2 = random.nextInt(52) + 1;
     return "round1.html";
   }
 
