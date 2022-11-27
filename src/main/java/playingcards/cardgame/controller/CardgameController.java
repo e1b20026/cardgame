@@ -33,7 +33,7 @@ public class CardgameController {
 
   @Autowired
   TrumpMapper trumpmapper;
-  
+
   @Autowired
   MemberMapper membermapper;
 
@@ -57,8 +57,26 @@ public class CardgameController {
   @GetMapping("/round1")
   public String round1(ModelMap model) {
       Random random = new Random();
-      int num1 = random.nextInt(52) + 1;
-      int num2 = random.nextInt(52) + 1;
+      int num1 = random.nextInt(5) + 1;
+      int num2 = random.nextInt(5) + 1;
+
+      Trump hand1 = trumpmapper.selectOneTrump(num1);
+      while (hand1.getPlace() == true) {
+        num1 = random.nextInt(5) + 1;
+        hand1 = trumpmapper.selectOneTrump(num1);
+      }
+
+      Trump hand2 = trumpmapper.selectOneTrump(num2);
+      while (hand1.getPlace() == true) {
+        num2 = random.nextInt(5) + 1;
+        hand2 = trumpmapper.selectOneTrump(num2);
+      }
+
+      trumpmapper.updateByPlace(num1);
+      trumpmapper.updateByPlace(num2);
+
+      model.addAttribute("hand1", hand1);
+      model.addAttribute("hand2", hand2);
     return "round1.html";
   }
 

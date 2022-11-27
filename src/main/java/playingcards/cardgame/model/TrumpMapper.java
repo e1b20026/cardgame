@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import org.apache.ibatis.annotations.Mapper;
 //import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
-//import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface TrumpMapper {
@@ -15,5 +15,8 @@ public interface TrumpMapper {
   ArrayList<Trump> selectAllTrump();
 
   @Select ("SELECT * from trump where id = #{id}")
-  Trump select1Trump();
+  Trump selectOneTrump(int id);
+
+  @Update("UPDATE trump SET place = true WHERE id = #{id}")
+  void updateByPlace(int id);
 }
