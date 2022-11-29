@@ -110,6 +110,7 @@ public class CardgameController {
       cpuHand3 = trumpmapper.selectOneTrump(cpuNum3);
     }
 
+
     randtrumpmapper.updateIdRandTrump(cpuHand1, 1);
     randtrumpmapper.updateIdRandTrump(cpuHand2, 2);
     randtrumpmapper.updateIdRandTrump(cpuHand3, 3);

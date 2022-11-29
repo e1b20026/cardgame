@@ -17,6 +17,6 @@ public interface RandTrumpMapper {
   @Select("SELECT * from randtrump where id = #{id}")
   RandTrump selectIdRandTrump(int id);
 
-  @Update("UPDATE randtrump SET suit = #{trump.suit} and number = #{trump.number} where id = #{id}")
-  RandTrump updateIdRandTrump(Trump trump, int id);
+  @Update("UPDATE randtrump SET suit = #{trump.suit},  number = #{trump.number} where id = #{id}")
+  boolean updateIdRandTrump(Trump trump, int id);
 }

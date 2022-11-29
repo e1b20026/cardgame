@@ -16,4 +16,4 @@ CREATE TABLE randtrump (
   suit VARCHAR,
   number INT,
   primary key(id)
-)
+);
