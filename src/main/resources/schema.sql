@@ -10,3 +10,10 @@ CREATE TABLE trump (
     number INT NOT NULL,
     place boolean NOT NULL
 );
+
+CREATE TABLE randtrump (
+  id INT,
+  suit VARCHAR,
+  number INT,
+  primary key(id)
+);

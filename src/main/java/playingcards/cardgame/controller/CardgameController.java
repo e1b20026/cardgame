@@ -39,6 +39,9 @@ public class CardgameController {
   MemberMapper membermapper;
 
   @Autowired
+  RandTrumpMapper randtrumpmapper;
+
+  @Autowired
   private AsyncCard User;
 
   private final Logger logger = LoggerFactory.getLogger(CardgameController.class);
@@ -84,6 +87,41 @@ public class CardgameController {
   public String round2(@RequestParam Integer hand1, @RequestParam Integer hand2, ModelMap model) {
     Trump myHand1 = trumpmapper.selectOneTrump(hand1);
     Trump myHand2 = trumpmapper.selectOneTrump(hand2);
+
+    Random random = new Random();
+    int cpuNum1 = random.nextInt(52) + 1;
+    Trump cpuHand1 = trumpmapper.selectOneTrump(cpuNum1);
+    while (cpuHand1.getPlace() == true) {
+      cpuNum1 = random.nextInt(52) + 1;
+      cpuHand1 = trumpmapper.selectOneTrump(cpuNum1);
+    }
+
+    int cpuNum2 = random.nextInt(52) + 1;
+    Trump cpuHand2 = trumpmapper.selectOneTrump(cpuNum2);
+    while (cpuHand2.getPlace() == true) {
+      cpuNum2 = random.nextInt(52) + 1;
+      cpuHand2 = trumpmapper.selectOneTrump(cpuNum2);
+    }
+
+    int cpuNum3 = random.nextInt(52) + 1;
+    Trump cpuHand3 = trumpmapper.selectOneTrump(cpuNum3);
+    while (cpuHand3.getPlace() == true) {
+      cpuNum3 = random.nextInt(52) + 1;
+      cpuHand3 = trumpmapper.selectOneTrump(cpuNum3);
+    }
+
+
+    randtrumpmapper.updateIdRandTrump(cpuHand1, 1);
+    randtrumpmapper.updateIdRandTrump(cpuHand2, 2);
+    randtrumpmapper.updateIdRandTrump(cpuHand3, 3);
+
+    RandTrump cpuRandHand1 = randtrumpmapper.selectIdRandTrump(1);
+    RandTrump cpuRandHand2 = randtrumpmapper.selectIdRandTrump(2);
+    RandTrump cpuRandHand3 = randtrumpmapper.selectIdRandTrump(3);
+
+    model.addAttribute("cpuHand1", cpuRandHand1);
+    model.addAttribute("cpuHand2", cpuRandHand2);
+    model.addAttribute("cpuHand3", cpuRandHand3);
     model.addAttribute("myHand1", myHand1);
     model.addAttribute("myHand2", myHand2);
     return "round2.html";

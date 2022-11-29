@@ -58,3 +58,9 @@ INSERT INTO trump (suit, number, place) VALUES ('Dia', 10, 'FALSE');
 INSERT INTO trump (suit, number, place) VALUES ('Dia', 11, 'FALSE');
 INSERT INTO trump (suit, number, place) VALUES ('Dia', 12, 'FALSE');
 INSERT INTO trump (suit, number, place) VALUES ('Dia', 13, 'FALSE');
+
+INSERT INTO randtrump (id) VALUES (1);
+INSERT INTO randtrump (id) VALUES (2);
+INSERT INTO randtrump (id) VALUES (3);
+INSERT INTO randtrump (id) VALUES (4);
+INSERT INTO randtrump (id) VALUES (5);
