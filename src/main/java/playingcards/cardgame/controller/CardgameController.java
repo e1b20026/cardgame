@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.PathVariable;
 //import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 //import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 import java.io.IOException;
@@ -80,8 +81,11 @@ public class CardgameController {
   }
 
   @GetMapping("/round2")
-  public String round2(ModelMap model) {
-
+  public String round2(@RequestParam Integer hand1, @RequestParam Integer hand2, ModelMap model) {
+    Trump myHand1 = trumpmapper.selectOneTrump(hand1);
+    Trump myHand2 = trumpmapper.selectOneTrump(hand2);
+    model.addAttribute("myHand1", myHand1);
+    model.addAttribute("myHand2", myHand2);
     return "round2.html";
   }
 
