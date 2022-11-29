@@ -48,7 +48,7 @@ public class CardgameController {
     String login_name = prin.getName();
     Member member = membermapper.selectNameMember(login_name);
     // update
-    membermapper.updateByName(member);
+    membermapper.updateByexistT(member);
 
     // model.addAttribute("members", members2);
     return "room1.html";
@@ -77,6 +77,20 @@ public class CardgameController {
     model.addAttribute("hand1", hand1);
     model.addAttribute("hand2", hand2);
     return "round1.html";
+  }
+
+  @GetMapping("/round2")
+  public String round2(ModelMap model) {
+
+    return "round2.html";
+  }
+
+  @GetMapping("/result")
+  public String result(Principal prin, ModelMap model) {
+    String name = prin.getName();
+    Member member = membermapper.selectNameMember(name);
+    membermapper.updateByexistF(member);
+    return "result.html";
   }
 
   @GetMapping("/exist")

@@ -21,5 +21,8 @@ public interface MemberMapper {
   ArrayList<Member> selectTrueMember();
 
   @Update("UPDATE member SET exist = true WHERE id = #{id}")
-  void updateByName(Member member);
+  void updateByexistT(Member member);
+
+  @Update("UPDATE member SET exist = false WHERE id = #{id}")
+  void updateByexistF(Member member);
 }
