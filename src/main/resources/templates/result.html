@@ -4,10 +4,29 @@
 <head>
   <meta charset="utf-8">
   <title>Cardgame</title>
+  <script>
+    window.onload = function () {
+      var sse = new EventSource('/Room/sendresult');
+      sse.onmessage = function (event) {
+        console.log(event.data);
+        if (event.data == 4) {
+          document.getElementById("result_complete").textContent = "ゲーム終了"
+          document.getElementById("result_incomplete").textContent = "終了した参加人数は：" + event.data;
+        }
+        else {
+          //操作対象のDOMを取得
+          document.getElementById("result_incomplete").textContent = "終了した参加人数は：" + event.data;//ノードの追加
+        }
+      }
+    }
+
+  </script>
 </head>
 
 <body>
   結果画面です
+  <h1 id="result_incomplete"></h1>
+  <a id="result_complete" href="/"></a>
 </body>
 
 </html>

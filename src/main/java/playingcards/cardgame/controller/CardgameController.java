@@ -38,7 +38,7 @@ public class CardgameController {
   MemberMapper membermapper;
 
   @Autowired
-  private AsyncCard LoginUser;
+  private AsyncCard User;
 
   private final Logger logger = LoggerFactory.getLogger(CardgameController.class);
 
@@ -94,12 +94,26 @@ public class CardgameController {
   }
 
   @GetMapping("/exist")
-  public SseEmitter pushFruit() {
+  public SseEmitter showexist() {
     // infoレベルでログを出力する
     logger.info("exist");
     final SseEmitter sseEmitter = new SseEmitter();
     try {
-      this.LoginUser.loginUser(sseEmitter);
+      this.User.loginUser(sseEmitter);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    return sseEmitter;
+
+  }
+
+  @GetMapping("/sendresult")
+  public SseEmitter showresult() {
+    // infoレベルでログを出力する
+    logger.info("result");
+    final SseEmitter sseEmitter = new SseEmitter();
+    try {
+      this.User.resultUser(sseEmitter);
     } catch (IOException e) {
       e.printStackTrace();
     }
