@@ -107,7 +107,7 @@ public class CardgameController {
 
   }
 
-  @GetMapping("/result")
+  @GetMapping("/sendresult")
   public SseEmitter showresult() {
     // infoレベルでログを出力する
     logger.info("result");

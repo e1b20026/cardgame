@@ -47,10 +47,10 @@ public class AsyncCard {
   public void resultUser(SseEmitter emitter) throws IOException {
     ArrayList<Member> members;
     try {
-      members = membermapper.selectTrueMember();
+      members = membermapper.selectFalseMember();
       int count = 0;
       for (Member member : members) {
-        if (member.getExist() == true) {
+        if (member.getExist() == false) {
           count++;
         }
       }
