@@ -14,7 +14,7 @@
   <div th:if="${hand2}">
     [[${hand2.suit}]], [[${hand2.number}]]
   </div>
-  <a href="/Room/round2">続行</a>
+  <a th:href="@{/Room/round2(hand1=${hand1.id},hand2=${hand2.id})}">続行</a>
   <a href="/Room/result">降りる</a>
 </body>
 
