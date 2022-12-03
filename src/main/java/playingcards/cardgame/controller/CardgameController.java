@@ -153,6 +153,12 @@ public class CardgameController {
     return "round3.html";
   }
 
+  @GetMapping("/round4")
+  public String round4(@RequestParam Integer myHand1, @RequestParam Integer myHand2, ModelMap model) {
+
+    return "round4.html";
+  }
+
   @GetMapping("/result")
   public String result(Principal prin, ModelMap model) {
     String name = prin.getName();
