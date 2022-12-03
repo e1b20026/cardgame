@@ -78,17 +78,6 @@ public class CardgameController {
     }
     trumpmapper.updateByPlace(num2);
 
-    model.addAttribute("hand1", hand1);
-    model.addAttribute("hand2", hand2);
-    return "round1.html";
-  }
-
-  @GetMapping("/round2")
-  public String round2(@RequestParam Integer hand1, @RequestParam Integer hand2, ModelMap model) {
-    Trump myHand1 = trumpmapper.selectOneTrump(hand1);
-    Trump myHand2 = trumpmapper.selectOneTrump(hand2);
-
-    Random random = new Random();
     int cpuNum1 = random.nextInt(52) + 1;
     Trump cpuHand1 = trumpmapper.selectOneTrump(cpuNum1);
     while (cpuHand1.getPlace() == true) {
@@ -110,10 +99,19 @@ public class CardgameController {
       cpuHand3 = trumpmapper.selectOneTrump(cpuNum3);
     }
 
-
     randtrumpmapper.updateIdRandTrump(cpuHand1, 1);
     randtrumpmapper.updateIdRandTrump(cpuHand2, 2);
     randtrumpmapper.updateIdRandTrump(cpuHand3, 3);
+
+    model.addAttribute("hand1", hand1);
+    model.addAttribute("hand2", hand2);
+    return "round1.html";
+  }
+
+  @GetMapping("/round2")
+  public String round2(@RequestParam Integer hand1, @RequestParam Integer hand2, ModelMap model) {
+    Trump myHand1 = trumpmapper.selectOneTrump(hand1);
+    Trump myHand2 = trumpmapper.selectOneTrump(hand2);
 
     RandTrump cpuRandHand1 = randtrumpmapper.selectIdRandTrump(1);
     RandTrump cpuRandHand2 = randtrumpmapper.selectIdRandTrump(2);
