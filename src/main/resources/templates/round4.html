@@ -1,1 +1,21 @@
-ここはround4です
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>Cardgame</title>
+</head>
+
+<body>
+  round3です
+  自分の手札
+  <div th:if="${myHand1}">
+    [[${myHand1.suit}]], [[${myHand1.number}]]
+  </div>
+  <div th:if="${myHand2}">
+    [[${myHand2.suit}]], [[${myHand2.number}]]
+  </div>
+
+</body>
+
+</html>
