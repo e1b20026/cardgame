@@ -26,9 +26,10 @@
   <div th:if="${cpuHand3}">
     [[${cpuHand3.suit}]], [[${cpuHand3.number}]]
   </div>
+  <div th:if="${cpuHand4}">
+    [[${cpuHand4.suit}]], [[${cpuHand4.number}]]
+  </div>
 
-  <a th:href="@{/Room/round3(myHand1=${myHand1.id},myHand2=${myHand2.id})}">続行</a>
-  <a href="/Room/result">降りる</a>
 </body>
 
 </html>
