@@ -155,7 +155,11 @@ public class CardgameController {
 
   @GetMapping("/round4")
   public String round4(@RequestParam Integer myHand1, @RequestParam Integer myHand2, ModelMap model) {
+    Trump hand1 = trumpmapper.selectOneTrump(myHand1);
+    Trump hand2 = trumpmapper.selectOneTrump(myHand2);
 
+    model.addAttribute("myHand1", hand1);
+    model.addAttribute("myHand2", hand2);
     return "round4.html";
   }
 
