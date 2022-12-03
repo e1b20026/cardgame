@@ -3,7 +3,7 @@ package playingcards.cardgame.controller;
 import playingcards.cardgame.model.*;
 
 import java.security.Principal;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 import java.util.Random;
 import org.slf4j.Logger;
@@ -84,6 +84,7 @@ public class CardgameController {
       cpuNum1 = random.nextInt(52) + 1;
       cpuHand1 = trumpmapper.selectOneTrump(cpuNum1);
     }
+    trumpmapper.updateByPlace(cpuNum1);
 
     int cpuNum2 = random.nextInt(52) + 1;
     Trump cpuHand2 = trumpmapper.selectOneTrump(cpuNum2);
@@ -91,6 +92,7 @@ public class CardgameController {
       cpuNum2 = random.nextInt(52) + 1;
       cpuHand2 = trumpmapper.selectOneTrump(cpuNum2);
     }
+    trumpmapper.updateByPlace(cpuNum2);
 
     int cpuNum3 = random.nextInt(52) + 1;
     Trump cpuHand3 = trumpmapper.selectOneTrump(cpuNum3);
@@ -98,6 +100,7 @@ public class CardgameController {
       cpuNum3 = random.nextInt(52) + 1;
       cpuHand3 = trumpmapper.selectOneTrump(cpuNum3);
     }
+    trumpmapper.updateByPlace(cpuNum3);
 
     randtrumpmapper.updateIdRandTrump(cpuHand1, 1);
     randtrumpmapper.updateIdRandTrump(cpuHand2, 2);
@@ -125,6 +128,7 @@ public class CardgameController {
       cpuHand4 = trumpmapper.selectOneTrump(cpuNum4);
     }
     randtrumpmapper.updateIdRandTrump(cpuHand4, 4);
+    trumpmapper.updateByPlace(cpuNum4);
 
     model.addAttribute("cpuHand1", cpuRandHand1);
     model.addAttribute("cpuHand2", cpuRandHand2);
@@ -147,6 +151,7 @@ public class CardgameController {
       cpuHand5 = trumpmapper.selectOneTrump(cpuNum5);
     }
     randtrumpmapper.updateIdRandTrump(cpuHand5, 5);
+    trumpmapper.updateByPlace(cpuNum5);
 
     RandTrump cpuRandHand1 = randtrumpmapper.selectIdRandTrump(1);
     RandTrump cpuRandHand2 = randtrumpmapper.selectIdRandTrump(2);
