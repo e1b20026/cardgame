@@ -139,6 +139,15 @@ public class CardgameController {
     Trump hand1 = trumpmapper.selectOneTrump(myHand1);
     Trump hand2 = trumpmapper.selectOneTrump(myHand2);
 
+    Random random = new Random();
+    int cpuNum5 = random.nextInt(52) + 1;
+    Trump cpuHand5 = trumpmapper.selectOneTrump(cpuNum5);
+    while (cpuHand5.getPlace() == true) {
+      cpuNum5 = random.nextInt(52) + 1;
+      cpuHand5 = trumpmapper.selectOneTrump(cpuNum5);
+    }
+    randtrumpmapper.updateIdRandTrump(cpuHand5, 5);
+
     RandTrump cpuRandHand1 = randtrumpmapper.selectIdRandTrump(1);
     RandTrump cpuRandHand2 = randtrumpmapper.selectIdRandTrump(2);
     RandTrump cpuRandHand3 = randtrumpmapper.selectIdRandTrump(3);
@@ -147,7 +156,7 @@ public class CardgameController {
     model.addAttribute("cpuHand1", cpuRandHand1);
     model.addAttribute("cpuHand2", cpuRandHand2);
     model.addAttribute("cpuHand3", cpuRandHand3);
-    model.addAttribute("cpuHand3", cpuRandHand4);
+    model.addAttribute("cpuHand4", cpuRandHand4);
     model.addAttribute("myHand1", hand1);
     model.addAttribute("myHand2", hand2);
     return "round3.html";
@@ -157,6 +166,18 @@ public class CardgameController {
   public String round4(@RequestParam Integer myHand1, @RequestParam Integer myHand2, ModelMap model) {
     Trump hand1 = trumpmapper.selectOneTrump(myHand1);
     Trump hand2 = trumpmapper.selectOneTrump(myHand2);
+
+    RandTrump cpuRandHand1 = randtrumpmapper.selectIdRandTrump(1);
+    RandTrump cpuRandHand2 = randtrumpmapper.selectIdRandTrump(2);
+    RandTrump cpuRandHand3 = randtrumpmapper.selectIdRandTrump(3);
+    RandTrump cpuRandHand4 = randtrumpmapper.selectIdRandTrump(4);
+    RandTrump cpuRandHand5 = randtrumpmapper.selectIdRandTrump(5);
+
+    model.addAttribute("cpuHand1", cpuRandHand1);
+    model.addAttribute("cpuHand2", cpuRandHand2);
+    model.addAttribute("cpuHand3", cpuRandHand3);
+    model.addAttribute("cpuHand4", cpuRandHand4);
+    model.addAttribute("cpuHand5", cpuRandHand5);
 
     model.addAttribute("myHand1", hand1);
     model.addAttribute("myHand2", hand2);

@@ -7,7 +7,7 @@
 </head>
 
 <body>
-  round3です
+  round4です
   自分の手札
   <div th:if="${myHand1}">
     [[${myHand1.suit}]], [[${myHand1.number}]]
@@ -15,7 +15,22 @@
   <div th:if="${myHand2}">
     [[${myHand2.suit}]], [[${myHand2.number}]]
   </div>
-
+  CPUの手札
+  <div th:if="${cpuHand1}">
+    [[${cpuHand1.suit}]], [[${cpuHand1.number}]]
+  </div>
+  <div th:if="${cpuHand2}">
+    [[${cpuHand2.suit}]], [[${cpuHand2.number}]]
+  </div>
+  <div th:if="${cpuHand3}">
+    [[${cpuHand3.suit}]], [[${cpuHand3.number}]]
+  </div>
+  <div th:if="${cpuHand4}">
+    [[${cpuHand4.suit}]], [[${cpuHand4.number}]]
+  </div>
+  <div th:if="${cpuHand5}">
+    [[${cpuHand5.suit}]], [[${cpuHand5.number}]]
+  </div>
 </body>
 
 </html>
