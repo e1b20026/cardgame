@@ -3,7 +3,7 @@ package playingcards.cardgame.model;
 public class Trump {
   int id;
   String suit;
-  int number;
+  String number;
   boolean place;
 
   // Thymeleafでフィールドを扱うためにはgetter/setterが必ず必要
@@ -29,11 +29,11 @@ public class Trump {
     this.suit = suit;
   }
 
-  public int getNumber() {
+  public String getNumber() {
     return number;
   }
 
-  public void setNumber(int number) {
+  public void setNumber(String number) {
     this.number = number;
   }
 
