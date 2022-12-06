@@ -3,7 +3,7 @@ package playingcards.cardgame.model;
 public class RandTrump {
   int id;
   String suit;
-  int number;
+  String number;
 
   public RandTrump() {
 
@@ -25,11 +25,11 @@ public class RandTrump {
     this.suit = suit;
   }
 
-  public int getNumber() {
+  public String getNumber() {
     return number;
   }
 
-  public void setNumber(int number) {
+  public void setNumber(String number) {
     this.number = number;
   }
 }

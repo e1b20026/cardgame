@@ -7,13 +7,13 @@ CREATE TABLE member (
 CREATE TABLE trump (
     id IDENTITY,
     suit VARCHAR NOT NULL,
-    number INT NOT NULL,
+    number VARCHAR NOT NULL,
     place boolean NOT NULL
 );
 
 CREATE TABLE randtrump (
   id INT,
   suit VARCHAR,
-  number INT,
+  number VARCHAR,
   primary key(id)
 );
