@@ -69,4 +69,40 @@ public class AllTrump {
     }
     return fourCard;
   }
+
+  // ストレートの際に利用
+  public static ArrayList<AllTrump> Straight(ArrayList<AllTrump> trump) {
+    ArrayList<AllTrump> straight = new ArrayList<>();// suit関係なしにストレートになる数を格納している
+    int compareNextCount = 0;
+    int compareColumnCount = 0;
+    int compareLast = 0;
+    for (int i = 0; i < trump.size(); i++) {
+      if (compareColumnCount == trump.size() - 4) {
+        break;
+      }
+      for (int j = i; j < trump.size(); j++) {
+        if (compareNextCount == 4) {// 4回隣と比較したら抜ける
+          break;
+        }
+        if (trump.get(j).evaluationNumber == trump.get(j + 1).evaluationNumber) {
+          straight.add(trump.get(j));
+        } else if (trump.get(j).evaluationNumber - 1 == trump.get(j + 1).evaluationNumber) {
+          straight.add(trump.get(j));
+          compareNextCount++;
+          compareLast = j;
+        } else {
+          straight.clear();
+          compareNextCount = 0;// 連続していなかったので0にする
+          compareLast = 0;
+          break;
+        }
+      }
+      if (compareNextCount == 4) {
+        straight.add(trump.get(compareLast + 1));
+        break;
+      }
+      compareColumnCount++;
+    }
+    return straight;// suit関係なしにストレートになる数を格納しているリストを返す
+  }
 }
