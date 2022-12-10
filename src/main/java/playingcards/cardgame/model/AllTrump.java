@@ -1,5 +1,7 @@
 package playingcards.cardgame.model;
 
+import java.util.ArrayList;
+
 public class AllTrump {
   int id;// カードの位置づけ
   String number;
@@ -23,16 +25,30 @@ public class AllTrump {
     this.evaluationNumber = evaluationNumber;
   }
 
-  public static ArrayList<Trump1> RoyalStraight(ArrayList<Trump1> trump) {
-    ArrayList<Trump1> royalStraight = new ArrayList<>();
-    ArrayList<Trump1> Straight = Straight(trump);
-    ArrayList<Trump1> Frash = Frash(Straight);
+  public static ArrayList<AllTrump> RoyalStraight(ArrayList<AllTrump> trump) {
+    ArrayList<AllTrump> royalStraight = new ArrayList<>();
+    ArrayList<AllTrump> Straight = Straight(trump);
+    ArrayList<AllTrump> Frash = Frash(Straight);
 
     if (Straight.size() != 0) {// ストレートの時
       if (Straight.get(Straight.size() - 1).evaluationNumber == 10 && Frash.size() != 0) {
         royalStraight = Frash;
       }
     }
-    return royalStraight;
+    return RoyalStraight;
+  }
+
+  // ストレートフラッシュの際に利用
+  public static ArrayList<AllTrump> StraightFrash(ArrayList<AllTrump> trump) {
+    ArrayList<AllTrump> StraightFrash = new ArrayList<>();
+    ArrayList<AllTrump> Straight = Straight(trump);
+    ArrayList<AllTrump> Frash = Frash(Straight);
+
+    if (Straight.size() != 0) {// ストレートの時
+      if (Frash.size() != 0) {
+        StraightFrash = Frash;
+      }
+    }
+    return StraightFrash;
   }
 }
