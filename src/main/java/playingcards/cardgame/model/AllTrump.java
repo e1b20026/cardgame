@@ -25,6 +25,7 @@ public class AllTrump {
     this.evaluationNumber = evaluationNumber;
   }
 
+  //ロイヤルストレートフラッシュの際に利用
   public static ArrayList<AllTrump> RoyalStraight(ArrayList<AllTrump> trump) {
     ArrayList<AllTrump> royalStraight = new ArrayList<>();
     ArrayList<AllTrump> Straight = Straight(trump);
@@ -35,7 +36,7 @@ public class AllTrump {
         royalStraight = Frash;
       }
     }
-    return RoyalStraight;
+    return royalStraight;
   }
 
   // ストレートフラッシュの際に利用
@@ -104,5 +105,41 @@ public class AllTrump {
       compareColumnCount++;
     }
     return straight;// suit関係なしにストレートになる数を格納しているリストを返す
+  }
+
+  // フラッシュの際に利用
+  public static ArrayList<AllTrump> Frash(ArrayList<AllTrump> trump) {
+    ArrayList<AllTrump> suit = new ArrayList<>();
+    int AFlag = 0;
+
+    for (int i = 0; i < trump.size(); i++) {
+      if (trump.get(i).evaluationNumber == 14) {
+        AFlag = 1;
+      }
+    }
+
+    for (int i = 0; i < trump.size(); i++) {
+      if (AFlag == 1 && trump.get(i).evaluationNumber == 1) {
+        break;
+      }
+      for (int j = 0; j < trump.size(); j++) {
+        if (trump.get(i).suit.equals(trump.get(j).suit)) {
+          if ((AFlag != 1 || trump.get(j).evaluationNumber != 1)) {
+            suit.add(trump.get(j));
+          }
+        }
+      }
+      if (suit.size() <= 4) {
+        suit.clear();
+      } else {
+        AFlag = 0;
+        return suit;
+      }
+    }
+    if (suit.size() <= 4) {
+      suit.clear();
+    }
+    AFlag = 0;
+    return suit;
   }
 }
