@@ -1,6 +1,8 @@
 package playingcards.cardgame.model;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Collections;
 
 public class AllTrump {
   int id;// カードの位置づけ
@@ -247,5 +249,20 @@ public class AllTrump {
         trump.get(i).evaluationNumber = Integer.parseInt(trump.get(i).number);
       }
     }
+  }
+
+  // ソートするためのメソッド(改)
+  public static void sorted(ArrayList<AllTrump> trump) {
+    Comparator<AllTrump> comparator = new Comparator<AllTrump>() {
+      @Override
+      public int compare(AllTrump T1, AllTrump T2) {
+        Integer t1 = T1.evaluationNumber;
+        Integer t2 = T2.evaluationNumber;
+        Integer judgement = Integer.valueOf(t1).compareTo(Integer.valueOf(t2));
+        return judgement;
+      }
+    };
+    Collections.sort(trump, comparator); // sortメソッドの第2引数に並べ替え方を渡す
+    Collections.reverse(trump);
   }
 }
