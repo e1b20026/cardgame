@@ -168,4 +168,27 @@ public class AllTrump {
     return fullHouse;
 
   }
+
+   // スリーカードの際に利用
+  public static ArrayList<AllTrump> ThreeCard(ArrayList<AllTrump> trump) {
+    ArrayList<AllTrump> threeCard = new ArrayList<>();
+    int nextCount = 0;
+
+    for (int i = 0; i < trump.size(); i++) {
+      if (nextCount == 2) {
+        threeCard.add(trump.get(i));
+        break;
+      }
+      if (i != trump.size() - 1 && trump.get(i).evaluationNumber == trump.get(i + 1).evaluationNumber) {// {2,2,2,Q,Q,10,K},{K,Q,Q,10,2,2,2}
+        threeCard.add(trump.get(i));
+        nextCount++;
+      } else {
+        if (nextCount == 1) {
+          threeCard.clear();
+          nextCount = 0;
+        }
+      }
+    }
+    return threeCard;
+  }
 }
