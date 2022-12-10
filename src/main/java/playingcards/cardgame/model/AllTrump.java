@@ -228,4 +228,24 @@ public class AllTrump {
     }
     return onePair;
   }
+
+  // トランプを数字評価するためのメソッド(改)
+  public static void numberChange(ArrayList<AllTrump> trump) {
+    for (int i = 0; i < trump.size(); i++) {
+      if (trump.get(i).number.equals("J") == true) {
+        trump.get(i).evaluationNumber = 11;
+      } else if (trump.get(i).number.equals("Q") == true) {
+        trump.get(i).evaluationNumber = 12;
+      } else if (trump.get(i).number.equals("K") == true) {
+        trump.get(i).evaluationNumber = 13;
+      } else if (trump.get(i).number.equals("A") == true && trump.get(i).evaluationNumber != 1) {
+        trump.get(i).evaluationNumber = 14;
+        AllTrump addTrump = new AllTrump(trump.get(i).id, trump.get(i).number,
+            trump.get(i).suit, 1);
+        trump.add(addTrump);
+      } else if (trump.get(i).number.equals("A") != true) {
+        trump.get(i).evaluationNumber = Integer.parseInt(trump.get(i).number);
+      }
+    }
+  }
 }
