@@ -51,4 +51,22 @@ public class AllTrump {
     }
     return StraightFrash;
   }
+
+  // フォーカードの際に利用
+  public static ArrayList<AllTrump> FourCard(ArrayList<AllTrump> trump) {
+    ArrayList<AllTrump> fourCard = new ArrayList<>();
+    for (int i = 0; i < trump.size(); i++) {
+      for (int j = 0; j < trump.size(); j++) {
+        if (trump.get(i).evaluationNumber == trump.get(j).evaluationNumber) {
+          fourCard.add(trump.get(j));
+        }
+      }
+      if (fourCard.size() != 4) {
+        fourCard.clear();
+      } else {
+        return fourCard;
+      }
+    }
+    return fourCard;
+  }
 }
