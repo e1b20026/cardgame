@@ -169,7 +169,7 @@ public class AllTrump {
 
   }
 
-   // スリーカードの際に利用
+  // スリーカードの際に利用
   public static ArrayList<AllTrump> ThreeCard(ArrayList<AllTrump> trump) {
     ArrayList<AllTrump> threeCard = new ArrayList<>();
     int nextCount = 0;
@@ -190,5 +190,29 @@ public class AllTrump {
       }
     }
     return threeCard;
+  }
+
+  public static ArrayList<AllTrump> TwoPair(ArrayList<AllTrump> trump) {
+    ArrayList<AllTrump> twoPair = new ArrayList<>();
+    int pairCount = 0;
+    int pairFlag = 0;
+
+    for (int i = 0; i < trump.size(); i++) {
+      if (pairCount == 2) {
+        twoPair.add(trump.get(i));
+        break;
+      }
+      if (i != trump.size() - 1 && trump.get(i).evaluationNumber == trump.get(i + 1).evaluationNumber) {
+        twoPair.add(trump.get(i));
+        pairFlag = 1;
+        pairCount++;
+      } else {
+        if (pairFlag == 1) {
+          pairFlag = 0;
+          twoPair.add(trump.get(i));
+        }
+      }
+    }
+    return twoPair;
   }
 }
