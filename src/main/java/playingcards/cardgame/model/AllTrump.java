@@ -27,6 +27,14 @@ public class AllTrump {
     this.evaluationNumber = evaluationNumber;
   }
 
+  // プリントの際に利用
+  public static void AlltrumpPrint(ArrayList<AllTrump> trump) {
+    for (int i = 0; i < trump.size(); i++) {
+      System.out.print(trump.get(i).evaluationNumber + " " + trump.get(i).number + " " + trump.get(i).suit + "|");
+    }
+    System.out.println();
+  }
+
   // ロイヤルストレートフラッシュの際に利用
   public static ArrayList<AllTrump> RoyalStraight(ArrayList<AllTrump> trump) {
     ArrayList<AllTrump> royalStraight = new ArrayList<>();
