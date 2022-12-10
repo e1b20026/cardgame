@@ -215,4 +215,17 @@ public class AllTrump {
     }
     return twoPair;
   }
+
+  public static ArrayList<AllTrump> OnePair(ArrayList<AllTrump> trump) {
+    ArrayList<AllTrump> onePair = new ArrayList<>();
+
+    for (int i = 0; i < trump.size(); i++) {
+      if (i != trump.size() - 1 && trump.get(i).evaluationNumber == trump.get(i + 1).evaluationNumber) {
+        onePair.add(trump.get(i));
+        onePair.add(trump.get(i + 1));
+        break;
+      }
+    }
+    return onePair;
+  }
 }
