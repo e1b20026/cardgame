@@ -25,7 +25,7 @@ public class AllTrump {
     this.evaluationNumber = evaluationNumber;
   }
 
-  //ロイヤルストレートフラッシュの際に利用
+  // ロイヤルストレートフラッシュの際に利用
   public static ArrayList<AllTrump> RoyalStraight(ArrayList<AllTrump> trump) {
     ArrayList<AllTrump> royalStraight = new ArrayList<>();
     ArrayList<AllTrump> Straight = Straight(trump);
@@ -141,5 +141,31 @@ public class AllTrump {
     }
     AFlag = 0;
     return suit;
+  }
+
+  // フルハウスの際に利用
+  public static ArrayList<AllTrump> FullHouse(ArrayList<AllTrump> trump) {
+    ArrayList<AllTrump> fullHouse = new ArrayList<>();
+    int nextFlag = 0;
+    int nextCount = 0;
+
+    for (int i = 0; i < trump.size(); i++) {
+      if (nextCount == 3) {
+        fullHouse.add(trump.get(i));
+        break;
+      }
+      if (i != trump.size() - 1 && trump.get(i).evaluationNumber == trump.get(i + 1).evaluationNumber) {// {2,2,2,Q,Q,10,K},{K,Q,Q,10,2,2,2}
+        fullHouse.add(trump.get(i));
+        nextFlag = 1;
+        nextCount++;
+      } else {
+        if (nextFlag == 1) {
+          fullHouse.add(trump.get(i));
+          nextFlag = 0;
+        }
+      }
+    }
+    return fullHouse;
+
   }
 }
