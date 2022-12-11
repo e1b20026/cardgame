@@ -1,6 +1,6 @@
 package playingcards.cardgame.model;
 
-public class UserResut {
+public class UserResult {
   int id;
   String username;
   String tn1;
@@ -14,7 +14,7 @@ public class UserResut {
   String tn5;
   String ts5;
 
-  public UserResut() {
+  public UserResult() {
 
   }
 
