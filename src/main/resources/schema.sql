@@ -2,6 +2,9 @@ CREATE TABLE member (
     id IDENTITY,
     userName VARCHAR NOT NULL,
     exist boolean NOT NULL,
+    exist2 boolean NOT NULL,
+    round3 boolean NOT NULL,
+    round4 boolean NOT NULL,
     rank INT
 );
 

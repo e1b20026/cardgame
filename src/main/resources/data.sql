@@ -1,7 +1,7 @@
-INSERT INTO member (userName,exist) VALUES ('kitamoto','FALSE');
-INSERT INTO member (userName,exist) VALUES ('komaki','FALSE');
-INSERT INTO member (userName,exist) VALUES ('ogawa','FALSE');
-INSERT INTO member (userName,exist) VALUES ('kurokawa','FALSE');
+INSERT INTO member (userName,exist,exist2,round3,round4) VALUES ('kitamoto','FALSE','FALSE','FALSE','FALSE');
+INSERT INTO member (userName,exist,exist2,round3,round4) VALUES ('komaki','FALSE','FALSE','FALSE','FALSE');
+INSERT INTO member (userName,exist,exist2,round3,round4) VALUES ('ogawa','FALSE','FALSE','FALSE','FALSE');
+INSERT INTO member (userName,exist,exist2,round3,round4) VALUES ('kurokawa','FALSE','FALSE','FALSE','FALSE');
 
 INSERT INTO trump (suit, number, place) VALUES ('Heart', 'A', 'FALSE');
 INSERT INTO trump (suit, number, place) VALUES ('Heart', '2', 'FALSE');
