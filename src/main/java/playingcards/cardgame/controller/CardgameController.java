@@ -3,7 +3,7 @@ package playingcards.cardgame.controller;
 import playingcards.cardgame.model.*;
 
 import java.security.Principal;
-//import java.util.ArrayList;
+import java.util.ArrayList;
 
 import java.util.Random;
 import org.slf4j.Logger;
@@ -172,11 +172,9 @@ public class CardgameController {
     Trump hand1 = trumpmapper.selectOneTrump(myHand1);
     Trump hand2 = trumpmapper.selectOneTrump(myHand2);
 
-    RandTrump cpuRandHand1 = randtrumpmapper.selectIdRandTrump(1);
-    RandTrump cpuRandHand2 = randtrumpmapper.selectIdRandTrump(2);
-    RandTrump cpuRandHand3 = randtrumpmapper.selectIdRandTrump(3);
-    RandTrump cpuRandHand4 = randtrumpmapper.selectIdRandTrump(4);
-    RandTrump cpuRandHand5 = randtrumpmapper.selectIdRandTrump(5);
+    for(int i = 1; i <= 5; i++){
+      ArrayList<AllTrump> Alltrump = randtrumpmapper. selectIdRandTrump(i);
+    }
 
     model.addAttribute("cpuHand1", cpuRandHand1);
     model.addAttribute("cpuHand2", cpuRandHand2);
