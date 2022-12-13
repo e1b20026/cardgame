@@ -4,6 +4,7 @@ public class Member {
   int id;
   String userName;
   boolean exist;
+  int rank;
 
   // Thymeleafでフィールドを扱うためにはgetter/setterが必ず必要
   // vscodeのソースコード右クリック->ソースアクションでsetter/getterを簡単に追加できる
@@ -16,7 +17,6 @@ public class Member {
     this.id = id;
     this.userName = userName;
   }
-
 
   public String getUserName() {
     return userName;
@@ -40,6 +40,14 @@ public class Member {
 
   public void setId(int id) {
     this.id = id;
+  }
+
+  public int getRank() {
+    return rank;
+  }
+
+  public void setRank(int rank) {
+    this.rank = rank;
   }
 
 }
