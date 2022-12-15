@@ -4,6 +4,9 @@ public class Member {
   int id;
   String userName;
   boolean exist;
+  boolean exist2;
+  boolean round3;
+  boolean round4;
   int rank;
 
   // Thymeleafでフィールドを扱うためにはgetter/setterが必ず必要
@@ -32,6 +35,30 @@ public class Member {
 
   public void setExist(boolean exist) {
     this.exist = exist;
+  }
+
+  public boolean getexist2() {
+    return exist2;
+  }
+
+  public void setRound2(boolean exist2) {
+    this.exist2 = exist2;
+  }
+
+  public boolean getRound3() {
+    return round3;
+  }
+
+  public void setRound3(boolean round3) {
+    this.round3 = round3;
+  }
+
+  public boolean getRound4() {
+    return round4;
+  }
+
+  public void setRound4(boolean round4) {
+    this.round4 = round4;
   }
 
   public int getId() {

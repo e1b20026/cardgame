@@ -4,9 +4,29 @@
 <head>
   <meta charset="utf-8">
   <title>Cardgame</title>
+  <script>
+    window.onload = function () {
+      var sse = new EventSource('/Room/exist2');
+      sse.onmessage = function (event) {
+        console.log(event.data);
+        if (event.data == 2) {
+          document.getElementById("call").textContent = "続行"
+          document.getElementById("drop").textContent = "降りる"
+          document.getElementById("room_incomplete").textContent = "現在の参加人数は：" + event.data;
+        }
+        else {
+          //操作対象のDOMを取得
+          document.getElementById("room_incomplete").textContent = "現在の参加人数は：" + event.data;//ノードの追加
+        }
+      }
+    }
+
+  </script>
 </head>
 
 <body>
+  <h1 id="room_incomplete"></h1>
+
   round2です
   自分の手札
   <div th:if="${myHand1}">
@@ -27,8 +47,8 @@
     [[${cpuHand3.suit}]], [[${cpuHand3.number}]]
   </div>
 
-  <a th:href="@{/Room/round3(myHand1=${myHand1.id},myHand2=${myHand2.id})}">続行</a>
-  <a href="/Room/result">降りる</a>
+  <a id="call" th:href="@{/Room/round3(myHand1=${myHand1.id},myHand2=${myHand2.id})}"></a>
+  <a id="drop" href="/Room/result"></a>
 </body>
 
 </html>
