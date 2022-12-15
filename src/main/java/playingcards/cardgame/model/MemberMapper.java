@@ -26,6 +26,9 @@ public interface MemberMapper {
   @Select("SELECT * from member where exist3 = true")
   ArrayList<Member> selectexist3TrueMember();
 
+  @Select("SELECT * from member where exist4 = true")
+  ArrayList<Member> selectexist4TrueMember();
+
   @Select("SELECT * from member where exist = false")
   ArrayList<Member> selectFalseMember();
 
@@ -40,4 +43,7 @@ public interface MemberMapper {
 
   @Update("UPDATE member SET exist3 = true WHERE id = #{id}")
   void updateByexist3T(Member member);
+
+  @Update("UPDATE member SET exist4 = true WHERE id = #{id}")
+  void updateByexist4T(Member member);
 }

@@ -178,7 +178,7 @@ public class CardgameController {
   }
 
   @GetMapping("/round4")
-  public String round4(@RequestParam Integer myHand1, @RequestParam Integer myHand2, ModelMap model) {
+  public String round4(@RequestParam Integer myHand1, @RequestParam Integer myHand2, ModelMap model, Principal prin) {
     Trump hand1 = trumpmapper.selectOneTrump(myHand1);
     Trump hand2 = trumpmapper.selectOneTrump(myHand2);
 
@@ -187,6 +187,11 @@ public class CardgameController {
     RandTrump cpuRandHand3 = randtrumpmapper.selectIdRandTrump(3);
     RandTrump cpuRandHand4 = randtrumpmapper.selectIdRandTrump(4);
     RandTrump cpuRandHand5 = randtrumpmapper.selectIdRandTrump(5);
+
+    String login_name = prin.getName();
+    Member member = membermapper.selectNameMember(login_name);
+    // update
+    membermapper.updateByexist4T(member);
 
     model.addAttribute("cpuHand1", cpuRandHand1);
     model.addAttribute("cpuHand2", cpuRandHand2);
@@ -242,6 +247,20 @@ public class CardgameController {
     final SseEmitter sseEmitter = new SseEmitter();
     try {
       this.User.accessexist3User(sseEmitter);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    return sseEmitter;
+
+  }
+
+  @GetMapping("/exist4")
+  public SseEmitter showexist4() {
+    // infoレベルでログを出力する
+    logger.info("exist4");
+    final SseEmitter sseEmitter = new SseEmitter();
+    try {
+      this.User.accessexist4User(sseEmitter);
     } catch (IOException e) {
       e.printStackTrace();
     }

@@ -4,7 +4,7 @@ CREATE TABLE member (
     exist boolean NOT NULL,
     exist2 boolean NOT NULL,
     exist3 boolean NOT NULL,
-    round4 boolean NOT NULL,
+    exist4 boolean NOT NULL,
     rank INT
 );
 
