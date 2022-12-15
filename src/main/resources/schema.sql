@@ -3,7 +3,7 @@ CREATE TABLE member (
     userName VARCHAR NOT NULL,
     exist boolean NOT NULL,
     exist2 boolean NOT NULL,
-    round3 boolean NOT NULL,
+    exist3 boolean NOT NULL,
     round4 boolean NOT NULL,
     rank INT
 );
