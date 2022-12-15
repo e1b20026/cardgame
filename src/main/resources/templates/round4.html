@@ -4,6 +4,23 @@
 <head>
   <meta charset="utf-8">
   <title>Cardgame</title>
+  <script>
+    window.onload = function () {
+      var sse = new EventSource('/Room/exist4');
+      sse.onmessage = function (event) {
+        console.log(event.data);
+        if (event.data == 2) {
+          document.getElementById("result").textContent = "ゲーム終了"
+          document.getElementById("room_incomplete").textContent = "現在の参加人数は：" + event.data;
+        }
+        else {
+          //操作対象のDOMを取得
+          document.getElementById("room_incomplete").textContent = "現在の参加人数は：" + event.data;//ノードの追加
+        }
+      }
+    }
+
+  </script>
 </head>
 
 <body>
@@ -31,7 +48,7 @@
   <div th:if="${cpuHand5}">
     [[${cpuHand5.suit}]], [[${cpuHand5.number}]]
   </div>
-  <a href="/Room/result">ゲーム終了</a>
+  <a id="result" href="/Room/result"></a>
 </body>
 
 </html>
