@@ -5,7 +5,7 @@ public class Member {
   String userName;
   boolean exist;
   boolean exist2;
-  boolean round3;
+  boolean exist3;
   boolean round4;
   int rank;
 
@@ -45,12 +45,12 @@ public class Member {
     this.exist2 = exist2;
   }
 
-  public boolean getRound3() {
-    return round3;
+  public boolean getexist3() {
+    return exist3;
   }
 
-  public void setRound3(boolean round3) {
-    this.round3 = round3;
+  public void setexist3(boolean exist3) {
+    this.exist3 = exist3;
   }
 
   public boolean getRound4() {
