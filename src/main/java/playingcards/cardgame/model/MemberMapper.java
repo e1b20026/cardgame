@@ -35,7 +35,7 @@ public interface MemberMapper {
   @Update("UPDATE member SET exist = true WHERE id = #{id}")
   void updateByexistT(Member member);
 
-  @Update("UPDATE member SET exist = false WHERE id = #{id}")
+  @Update("UPDATE member SET exist = false, exist2 = false, exist3 = false, exist4 = false WHERE id = #{id}")
   void updateByexistF(Member member);
 
   @Update("UPDATE member SET exist2 = true WHERE id = #{id}")
