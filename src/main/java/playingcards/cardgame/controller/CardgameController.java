@@ -187,24 +187,24 @@ public class CardgameController {
 
     ArrayList<RandTrump> cpuTrump = randtrumpmapper.selectAllRandTrump();
 
-    
+    AllTrump trump = new AllTrump();
 
-    RandTrump cpuRandHand1 = randtrumpmapper.selectIdRandTrump(1);
-    RandTrump cpuRandHand2 = randtrumpmapper.selectIdRandTrump(2);
-    RandTrump cpuRandHand3 = randtrumpmapper.selectIdRandTrump(3);
-    RandTrump cpuRandHand4 = randtrumpmapper.selectIdRandTrump(4);
-    RandTrump cpuRandHand5 = randtrumpmapper.selectIdRandTrump(5);
+    for (int i = 0; i < 7; i++) {
+      if (i < 5) {
+        trump = new AllTrump(i, cpuTrump.get(i).getNumber(), cpuTrump.get(i).getSuit());
+      } else if (i == 5) {
+        trump = new AllTrump(i, hand1.getNumber(), hand1.getSuit());
+      } else if (i == 6) {
+        trump = new AllTrump(i, hand2.getNumber(), hand2.getSuit());
+      }
+
+      AllTrump.add(trump);
+    }
 
     String login_name = prin.getName();
     Member member = membermapper.selectNameMember(login_name);
     // update
     membermapper.updateByexist4T(member);
-
-    model.addAttribute("cpuHand1", cpuRandHand1);
-    model.addAttribute("cpuHand2", cpuRandHand2);
-    model.addAttribute("cpuHand3", cpuRandHand3);
-    model.addAttribute("cpuHand4", cpuRandHand4);
-    model.addAttribute("cpuHand5", cpuRandHand5);
 
     model.addAttribute("myHand1", hand1);
     model.addAttribute("myHand2", hand2);
