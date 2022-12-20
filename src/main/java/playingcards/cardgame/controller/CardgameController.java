@@ -42,6 +42,9 @@ public class CardgameController {
   RandTrumpMapper randtrumpmapper;
 
   @Autowired
+  UserResultMapper userresultmapper;
+
+  @Autowired
   private AsyncCard User;
 
   private final Logger logger = LoggerFactory.getLogger(CardgameController.class);
@@ -179,6 +182,10 @@ public class CardgameController {
 
   @GetMapping("/round4")
   public String round4(@RequestParam Integer myHand1, @RequestParam Integer myHand2, ModelMap model, Principal prin) {
+
+    String login_name = prin.getName();
+    Member member = membermapper.selectNameMember(login_name);
+
     Trump hand1 = trumpmapper.selectOneTrump(myHand1);
     Trump hand2 = trumpmapper.selectOneTrump(myHand2);
 
@@ -259,8 +266,13 @@ public class CardgameController {
       AllTrump.addTrump(ReturnTrump, JudgeTrump);
     }
 
-    String login_name = prin.getName();
-    Member member = membermapper.selectNameMember(login_name);
+    int id = member.getId();
+
+    userresultmapper.insertResult(id, login_name, ReturnTrump.get(0).getNumber(), ReturnTrump.get(0).getSuit(),
+        ReturnTrump.get(1).getNumber(), ReturnTrump.get(1).getSuit(), ReturnTrump.get(2).getNumber(),
+        ReturnTrump.get(2).getSuit(), ReturnTrump.get(3).getNumber(), ReturnTrump.get(3).getSuit(),
+        ReturnTrump.get(4).getNumber(), ReturnTrump.get(4).getSuit());
+
     // update
     membermapper.updateByexist4T(member);
 
