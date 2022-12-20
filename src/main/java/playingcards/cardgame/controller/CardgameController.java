@@ -246,11 +246,11 @@ public class CardgameController {
     } else if (AllTrump.ThreeCard(JudgeTrump).size() == 3) {
       // membermapper.insertRank(4);
       ReturnTrump = AllTrump.ThreeCard(JudgeTrump);
-      System.out.println("スリーハンドです");
+      System.out.println("スリーカードです");
     } else if (AllTrump.TwoPair(JudgeTrump).size() == 4) {
       // membermapper.insertRank(3);
       ReturnTrump = AllTrump.TwoPair(JudgeTrump);
-      System.out.println("ツーハンドです");
+      System.out.println("ツーペアです");
     } else if (AllTrump.OnePair(JudgeTrump).size() == 2) {
       // membermapper.insertRank(2);
       ReturnTrump = AllTrump.OnePair(JudgeTrump);
@@ -258,7 +258,7 @@ public class CardgameController {
     } else {
       // membermapper.insertRank(1);
       ReturnTrump = AllTrump.noHand(JudgeTrump);
-      System.out.println("ノーハンドです");
+      System.out.println("ノーペアです");
     }
 
     // フォーカード・スリーカード・ツーペア・ワンペアの際に利用

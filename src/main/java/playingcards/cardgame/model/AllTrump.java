@@ -361,7 +361,7 @@ public class AllTrump {
         }
       }
       if (Flag == 1) {
-        break;
+        Flag = 0;
       } else {
         ReTrump.add(AllTrump.get(i));
       }
