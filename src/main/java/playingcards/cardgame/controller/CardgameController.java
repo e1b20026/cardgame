@@ -182,7 +182,7 @@ public class CardgameController {
     Trump hand1 = trumpmapper.selectOneTrump(myHand1);
     Trump hand2 = trumpmapper.selectOneTrump(myHand2);
 
-    ArrayList<AllTrump> AllTrump = new ArrayList<>();// 手札とランダムカードの合計7枚を格納するリスト
+    ArrayList<AllTrump> JudgeTrump = new ArrayList<>();// 手札とランダムカードの合計7枚を格納するリスト
     ArrayList<AllTrump> ReturnTrump = new ArrayList<>();// 判定後のカードを格納するリスト
 
     ArrayList<RandTrump> cpuTrump = randtrumpmapper.selectAllRandTrump();
@@ -198,7 +198,65 @@ public class CardgameController {
         trump = new AllTrump(i, hand2.getNumber(), hand2.getSuit());
       }
 
-      AllTrump.add(trump);
+      JudgeTrump.add(trump);
+
+    }
+
+    // Allmethod.AlltrumpPrint(Alltrump);// 準備確認(全てのカードを表示)
+    AllTrump.numberChange(JudgeTrump);
+    AllTrump.suitChange(JudgeTrump);
+    AllTrump.AlltrumpPrint(JudgeTrump);
+    System.out.println("********************************************************************************************");
+    AllTrump.sorted(JudgeTrump);
+    AllTrump.AlltrumpPrint(JudgeTrump);
+    System.out.println("********************************************************************************************");
+    // ロイヤルストレートかどうか
+
+    if (AllTrump.RoyalStraight(JudgeTrump).size() == 5) {
+      // membermapper.insertRank(10);
+      ReturnTrump = AllTrump.RoyalStraight(JudgeTrump);
+      System.out.println("ロイヤルストレートフラッシュです");
+    } else if (AllTrump.StraightFrash(JudgeTrump).size() == 5) {
+      // membermapper.insertRank(9);
+      ReturnTrump = AllTrump.StraightFrash(JudgeTrump);
+      System.out.println("ストレートフラッシュです");
+    } else if (AllTrump.FourCard(JudgeTrump).size() == 4) {
+      // membermapper.insertRank(8);
+      ReturnTrump = AllTrump.FourCard(JudgeTrump);
+      System.out.println("フォーカードです");
+    } else if (AllTrump.FullHouse(JudgeTrump).size() == 5) {
+      // membermapper.insertRank(7);
+      ReturnTrump = AllTrump.FullHouse(JudgeTrump);
+      System.out.println("フルハウスです");
+    } else if (AllTrump.Frash(JudgeTrump).size() == 5) {
+      // membermapper.insertRank(6);
+      ReturnTrump = AllTrump.Frash(JudgeTrump);
+      System.out.println("フラッシュです");
+    } else if (AllTrump.ResultStraight(AllTrump.Straight(JudgeTrump)).size() == 5) {
+      // membermapper.insertRank(5);
+      ReturnTrump = AllTrump.ResultStraight(AllTrump.Straight(JudgeTrump));
+      System.out.println("ストレートです");
+    } else if (AllTrump.ThreeCard(JudgeTrump).size() == 3) {
+      // membermapper.insertRank(4);
+      ReturnTrump = AllTrump.ThreeCard(JudgeTrump);
+      System.out.println("スリーハンドです");
+    } else if (AllTrump.TwoPair(JudgeTrump).size() == 4) {
+      // membermapper.insertRank(3);
+      ReturnTrump = AllTrump.TwoPair(JudgeTrump);
+      System.out.println("ツーハンドです");
+    } else if (AllTrump.OnePair(JudgeTrump).size() == 2) {
+      // membermapper.insertRank(2);
+      ReturnTrump = AllTrump.OnePair(JudgeTrump);
+      System.out.println("ワンペアです");
+    } else {
+      // membermapper.insertRank(1);
+      ReturnTrump = AllTrump.noHand(JudgeTrump);
+      System.out.println("ノーハンドです");
+    }
+
+    // フォーカード・スリーカード・ツーペア・ワンペアの際に利用
+    if (ReturnTrump.size() != 5) {
+      AllTrump.addTrump(ReturnTrump, JudgeTrump);
     }
 
     String login_name = prin.getName();
