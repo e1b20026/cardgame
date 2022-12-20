@@ -368,4 +368,12 @@ public class AllTrump {
     }
   }
 
+  public String getNumber() {
+    return this.number;
+  }
+
+  public String getSuit() {
+    return this.suit;
+  }
+
 }
