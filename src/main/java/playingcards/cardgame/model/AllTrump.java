@@ -8,7 +8,8 @@ public class AllTrump {
   int id;// カードの位置づけ
   String number;
   String suit;
-  int evaluationNumber;
+  int evaluationNumber;// 数字を数字評価する
+  int evaluationSuit;// スーツを数字評価する
 
   public AllTrump() {
 
@@ -30,7 +31,8 @@ public class AllTrump {
   // プリントの際に利用
   public static void AlltrumpPrint(ArrayList<AllTrump> trump) {
     for (int i = 0; i < trump.size(); i++) {
-      System.out.print(trump.get(i).evaluationNumber + " " + trump.get(i).number + " " + trump.get(i).suit + "|");
+      System.out.print(trump.get(i).evaluationNumber + " " + trump.get(i).number + " " + trump.get(i).suit
+          + trump.get(i).evaluationSuit + "|");
     }
     System.out.println();
   }
@@ -81,40 +83,30 @@ public class AllTrump {
     return fourCard;
   }
 
-  // ストレートの際に利用
-  public static ArrayList<AllTrump> Straight(ArrayList<AllTrump> trump) {
-    ArrayList<AllTrump> straight = new ArrayList<>();// suit関係なしにストレートになる数を格納している
-    int compareNextCount = 0;
-    int compareColumnCount = 0;
-    int compareLast = 0;
+  // フルハウスの際に利用
+  public static ArrayList<AllTrump> FullHouse(ArrayList<AllTrump> trump) {
+    ArrayList<AllTrump> fullHouse = new ArrayList<>();
+    int nextFlag = 0;
+    int nextCount = 0;
+
     for (int i = 0; i < trump.size(); i++) {
-      if (compareColumnCount == trump.size() - 4) {
+      if (nextCount == 3) {
+        fullHouse.add(trump.get(i));
         break;
       }
-      for (int j = i; j < trump.size(); j++) {
-        if (compareNextCount == 4) {// 4回隣と比較したら抜ける
-          break;
-        }
-        if (trump.get(j).evaluationNumber == trump.get(j + 1).evaluationNumber) {
-          straight.add(trump.get(j));
-        } else if (trump.get(j).evaluationNumber - 1 == trump.get(j + 1).evaluationNumber) {
-          straight.add(trump.get(j));
-          compareNextCount++;
-          compareLast = j;
-        } else {
-          straight.clear();
-          compareNextCount = 0;// 連続していなかったので0にする
-          compareLast = 0;
-          break;
+      if (i != trump.size() - 1 && trump.get(i).evaluationNumber == trump.get(i + 1).evaluationNumber) {// {2,2,2,Q,Q,10,K},{K,Q,Q,10,2,2,2}
+        fullHouse.add(trump.get(i));
+        nextFlag = 1;
+        nextCount++;
+      } else {
+        if (nextFlag == 1) {
+          fullHouse.add(trump.get(i));
+          nextFlag = 0;
         }
       }
-      if (compareNextCount == 4) {
-        straight.add(trump.get(compareLast + 1));
-        break;
-      }
-      compareColumnCount++;
     }
-    return straight;// suit関係なしにストレートになる数を格納しているリストを返す
+    return fullHouse;
+
   }
 
   // フラッシュの際に利用
@@ -153,30 +145,86 @@ public class AllTrump {
     return suit;
   }
 
-  // フルハウスの際に利用
-  public static ArrayList<AllTrump> FullHouse(ArrayList<AllTrump> trump) {
-    ArrayList<AllTrump> fullHouse = new ArrayList<>();
-    int nextFlag = 0;
-    int nextCount = 0;
-
+  // ストレートの際に利用
+  public static ArrayList<AllTrump> Straight(ArrayList<AllTrump> trump) {// {11,11,10,9,9,9,9}
+    ArrayList<AllTrump> straight = new ArrayList<>();// suit関係なしにストレートになる数を格納している
+    int compareNextCount = 0;
+    int compareColumnCount = 0;
+    int sameCount = 0;
+    int compareLast = 0;
     for (int i = 0; i < trump.size(); i++) {
-      if (nextCount == 3) {
-        fullHouse.add(trump.get(i));
+      if (compareColumnCount == trump.size() - 4) {
         break;
       }
-      if (i != trump.size() - 1 && trump.get(i).evaluationNumber == trump.get(i + 1).evaluationNumber) {// {2,2,2,Q,Q,10,K},{K,Q,Q,10,2,2,2}
-        fullHouse.add(trump.get(i));
-        nextFlag = 1;
-        nextCount++;
+      for (int j = i; j < trump.size(); j++) {
+        if (compareNextCount == 4 || j == trump.size() - 1) {// 4回隣と比較したら抜ける
+          break;
+        }
+        if (trump.get(j).evaluationNumber == trump.get(j + 1).evaluationNumber) {
+          sameCount++;
+          straight.add(trump.get(j));
+        } else if (trump.get(j).evaluationNumber - 1 == trump.get(j + 1).evaluationNumber) {
+          straight.add(trump.get(j));
+          compareNextCount++;
+          compareLast = j;
+        } else {
+          straight.clear();
+          compareNextCount = 0;// 連続していなかったので0にする
+          compareLast = 0;
+          break;
+        }
+      }
+      if (compareNextCount == 4) {
+        straight.add(trump.get(compareLast + 1));
+        break;
+      }
+      compareColumnCount++;
+    }
+    if (sameCount >= 3 || straight.size() <= 4) {
+      straight.clear();
+    }
+    AlltrumpPrint(straight);
+    System.out.println(straight.size());
+    return straight;// suit関係なしにストレートになる数を格納しているリストを返す
+  }
+
+  // ストレート判定を受けたカードが6枚以上の場合に利用
+  public static ArrayList<AllTrump> ResultStraight(ArrayList<AllTrump> trump) {
+    ArrayList<AllTrump> returnTrump = new ArrayList<>();
+    ArrayList<AllTrump> tmpTrump = new ArrayList<>();// 連続しているトランプを格納し、この中から一番強いスーツを取得する
+    int maxSuit_index = 0;
+    // スーツの強さ
+    // ♠（スペード4）＞♥（ハート3）＞♦（ダイヤ2）＞♣（クローバー1）
+    for (int i = 0; i < trump.size(); i++) {
+      if (i == trump.size() - 1) {
+        returnTrump.add(trump.get(i));
+        break;
+      }
+      if (trump.get(i).evaluationNumber == trump.get(i + 1).evaluationNumber) {// {8, 6, 7S,7C,7D, 10,
+                                                                               // 9},{10,9,8,7S,7C,7D,6}
+        tmpTrump.add(trump.get(i));
+        AlltrumpPrint(tmpTrump);
       } else {
-        if (nextFlag == 1) {
-          fullHouse.add(trump.get(i));
-          nextFlag = 0;
+        AlltrumpPrint(tmpTrump);
+        if (tmpTrump.size() > 0) {
+          tmpTrump.add(trump.get(i));
+          System.out.println("***************");
+          AlltrumpPrint(tmpTrump);
+          for (int j = 1; j < tmpTrump.size(); j++) {
+            if (tmpTrump.get(j).evaluationSuit > tmpTrump.get(maxSuit_index).evaluationSuit) {
+              maxSuit_index = j;
+            }
+          }
+          returnTrump.add(tmpTrump.get(maxSuit_index));
+          maxSuit_index = 0;
+          tmpTrump.clear();
+        } else {
+          returnTrump.add(trump.get(i));
         }
       }
     }
-    return fullHouse;
 
+    return returnTrump;
   }
 
   // スリーカードの際に利用
@@ -202,6 +250,7 @@ public class AllTrump {
     return threeCard;
   }
 
+  // ツーペアの際に利用
   public static ArrayList<AllTrump> TwoPair(ArrayList<AllTrump> trump) {
     ArrayList<AllTrump> twoPair = new ArrayList<>();
     int pairCount = 0;
@@ -226,6 +275,7 @@ public class AllTrump {
     return twoPair;
   }
 
+  // ワンペアの際に利用
   public static ArrayList<AllTrump> OnePair(ArrayList<AllTrump> trump) {
     ArrayList<AllTrump> onePair = new ArrayList<>();
 
@@ -237,6 +287,15 @@ public class AllTrump {
       }
     }
     return onePair;
+  }
+
+  // ノーハンドの際に利用
+  public static ArrayList<AllTrump> noHand(ArrayList<AllTrump> trump) {
+    ArrayList<AllTrump> noHand = new ArrayList<>();
+    for (int i = 0; i < 5; i++) {
+      noHand.add(trump.get(i));
+    }
+    return noHand;
   }
 
   // トランプを数字評価するためのメソッド(改)
@@ -259,6 +318,21 @@ public class AllTrump {
     }
   }
 
+  // トランプのスーツを数字評価するためのメソッド
+  public static void suitChange(ArrayList<AllTrump> trump) {
+    for (int i = 0; i < trump.size(); i++) {
+      if (trump.get(i).suit.equals("Spade")) {
+        trump.get(i).evaluationSuit = 4;
+      } else if (trump.get(i).suit.equals("Heart")) {
+        trump.get(i).evaluationSuit = 3;
+      } else if (trump.get(i).suit.equals("Dia")) {
+        trump.get(i).evaluationSuit = 2;
+      } else {
+        trump.get(i).evaluationSuit = 1;
+      }
+    }
+  }
+
   // ソートするためのメソッド(改)
   public static void sorted(ArrayList<AllTrump> trump) {
     Comparator<AllTrump> comparator = new Comparator<AllTrump>() {
@@ -273,4 +347,25 @@ public class AllTrump {
     Collections.sort(trump, comparator); // sortメソッドの第2引数に並べ替え方を渡す
     Collections.reverse(trump);
   }
+
+  // カードが5枚になっていない場合に利用
+  public static void addTrump(ArrayList<AllTrump> ReTrump, ArrayList<AllTrump> AllTrump) {
+    int Flag = 0;
+    for (int i = 0; i < AllTrump.size(); i++) {
+      if (ReTrump.size() == 5) {
+        break;
+      }
+      for (int j = 0; j < ReTrump.size(); j++) {
+        if (AllTrump.get(i).id == ReTrump.get(j).id) {
+          Flag = 1;
+        }
+      }
+      if (Flag == 1) {
+        break;
+      } else {
+        ReTrump.add(AllTrump.get(i));
+      }
+    }
+  }
+
 }
