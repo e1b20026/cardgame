@@ -266,6 +266,7 @@ public class CardgameController {
       AllTrump.addTrump(ReturnTrump, JudgeTrump);
     }
 
+    System.out.println(ReturnTrump.size());
     int id = member.getId();
 
     userresultmapper.insertResult(id, login_name, ReturnTrump.get(0).getNumber(), ReturnTrump.get(0).getSuit(),
@@ -285,7 +286,14 @@ public class CardgameController {
   public String result(Principal prin, ModelMap model) {
     String name = prin.getName();
     Member member = membermapper.selectNameMember(name);
+    ArrayList<AllTrump> resultTrump = userresultmapper.selectAllByResult();
+    for (AllTrump result : resultTrump) {
+      // System.out.println(result.);
+      // System.out.println(result.getNumber());
+      // System.out.println(result.id);
+    }
     membermapper.updateByexistF(member);
+    model.addAttribute("resultTrump", resultTrump);
     return "result.html";
   }
 
