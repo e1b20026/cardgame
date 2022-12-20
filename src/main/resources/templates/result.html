@@ -25,16 +25,6 @@
 
 <body>
   結果画面です
-  <div th:if="${resultTrump}">
-    <div th:each="trump, stat:${resultTrump}">
-      [[${trump.id}]]:[[${trump.username}]]
-      [[${trump.tn1}]]:[[${trump.ts1}]]
-      [[${trump.tn2}]]:[[${trump.ts2}]]
-      [[${trump.tn3}]]:[[${trump.ts3}]]
-      [[${trump.tn4}]]:[[${trump.ts4}]]
-      [[${trump.tn5}]]:[[${trump.ts5}]]
-    </div>
-  </div>
   <h1 id="result_incomplete"></h1>
   <a id="result_complete" href="/"></a>
 </body>
