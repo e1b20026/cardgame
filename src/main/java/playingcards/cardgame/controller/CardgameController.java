@@ -4,7 +4,7 @@ import playingcards.cardgame.model.*;
 
 import java.security.Principal;
 //import java.util.ArrayList;
-
+import java.util.ArrayList;
 import java.util.Random;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -181,6 +181,13 @@ public class CardgameController {
   public String round4(@RequestParam Integer myHand1, @RequestParam Integer myHand2, ModelMap model, Principal prin) {
     Trump hand1 = trumpmapper.selectOneTrump(myHand1);
     Trump hand2 = trumpmapper.selectOneTrump(myHand2);
+
+    ArrayList<AllTrump> AllTrump = new ArrayList<>();// 手札とランダムカードの合計7枚を格納するリスト
+    ArrayList<AllTrump> ReturnTrump = new ArrayList<>();// 判定後のカードを格納するリスト
+
+    ArrayList<RandTrump> cpuTrump = randtrumpmapper.selectAllRandTrump();
+
+    
 
     RandTrump cpuRandHand1 = randtrumpmapper.selectIdRandTrump(1);
     RandTrump cpuRandHand2 = randtrumpmapper.selectIdRandTrump(2);

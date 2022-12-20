@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Update;
 @Mapper
 public interface RandTrumpMapper {
 
-  @Select("SELECT * from trump")
+  @Select("SELECT * from randtrump")
   ArrayList<RandTrump> selectAllRandTrump();
 
   @Select("SELECT * from randtrump where id = #{id}")
