@@ -28,11 +28,15 @@ public class AllTrump {
     this.evaluationNumber = evaluationNumber;
   }
 
-  // プリントの際に利用
+  // デバッグ用
   public static void AlltrumpPrint(ArrayList<AllTrump> trump) {
     for (int i = 0; i < trump.size(); i++) {
-      System.out.print(trump.get(i).evaluationNumber + " " + trump.get(i).number + " " + trump.get(i).suit
-          + trump.get(i).evaluationSuit + "|");
+      System.out.println("トランプ情報");
+      System.out.println("************************************************");
+      System.out.println("id:" + trump.get(i).id);
+      System.out.println("Number:" + trump.get(i).number);
+      System.out.println("Suit:" + trump.get(i).suit);
+      System.out.println("************************************************");
     }
     System.out.println();
   }
@@ -183,8 +187,6 @@ public class AllTrump {
     if (sameCount >= 3 || straight.size() <= 4) {
       straight.clear();
     }
-    AlltrumpPrint(straight);
-    System.out.println(straight.size());
     return straight;// suit関係なしにストレートになる数を格納しているリストを返す
   }
 
@@ -203,13 +205,10 @@ public class AllTrump {
       if (trump.get(i).evaluationNumber == trump.get(i + 1).evaluationNumber) {// {8, 6, 7S,7C,7D, 10,
                                                                                // 9},{10,9,8,7S,7C,7D,6}
         tmpTrump.add(trump.get(i));
-        AlltrumpPrint(tmpTrump);
+
       } else {
-        AlltrumpPrint(tmpTrump);
         if (tmpTrump.size() > 0) {
           tmpTrump.add(trump.get(i));
-          System.out.println("***************");
-          AlltrumpPrint(tmpTrump);
           for (int j = 1; j < tmpTrump.size(); j++) {
             if (tmpTrump.get(j).evaluationSuit > tmpTrump.get(maxSuit_index).evaluationSuit) {
               maxSuit_index = j;
@@ -254,22 +253,16 @@ public class AllTrump {
   public static ArrayList<AllTrump> TwoPair(ArrayList<AllTrump> trump) {
     ArrayList<AllTrump> twoPair = new ArrayList<>();
     int pairCount = 0;
-    int pairFlag = 0;
 
     for (int i = 0; i < trump.size(); i++) {
       if (pairCount == 2) {
-        twoPair.add(trump.get(i));
         break;
       }
       if (i != trump.size() - 1 && trump.get(i).evaluationNumber == trump.get(i + 1).evaluationNumber) {
         twoPair.add(trump.get(i));
-        pairFlag = 1;
+        twoPair.add(trump.get(i + 1));
+        i++;
         pairCount++;
-      } else {
-        if (pairFlag == 1) {
-          pairFlag = 0;
-          twoPair.add(trump.get(i));
-        }
       }
     }
     return twoPair;
@@ -350,19 +343,25 @@ public class AllTrump {
 
   // カードが5枚になっていない場合に利用
   public static void addTrump(ArrayList<AllTrump> ReTrump, ArrayList<AllTrump> AllTrump) {
-    int Flag = 0;
+    int flag = 0;
     for (int i = 0; i < AllTrump.size(); i++) {
       if (ReTrump.size() == 5) {
         break;
       }
       for (int j = 0; j < ReTrump.size(); j++) {
         if (AllTrump.get(i).id == ReTrump.get(j).id) {
-          Flag = 1;
+          System.out.println(AllTrump.get(i).id + "|" + ReTrump.get(j).id + ":被ってます");// デバッグ用
+          flag = 1;
+          break;
+        } else {
+          System.out.println(AllTrump.get(i).id + "|" + ReTrump.get(j).id + ":被ってません");// デバッグ用
         }
       }
-      if (Flag == 1) {
-        Flag = 0;
+      System.out.println("***********************************************************");// デバッグ用
+      if (flag == 1) {
+        flag = 0;
       } else {
+        System.out.println(flag);// デバッグ用
         ReTrump.add(AllTrump.get(i));
       }
     }
