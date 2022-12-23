@@ -212,61 +212,58 @@ public class CardgameController {
     // Allmethod.AlltrumpPrint(Alltrump);// 準備確認(全てのカードを表示)
     AllTrump.numberChange(JudgeTrump);
     AllTrump.suitChange(JudgeTrump);
-    AllTrump.AlltrumpPrint(JudgeTrump);
-    System.out.println("********************************************************************************************");
     AllTrump.sorted(JudgeTrump);
-    AllTrump.AlltrumpPrint(JudgeTrump);
-    System.out.println("********************************************************************************************");
     // ロイヤルストレートかどうか
 
     if (AllTrump.RoyalStraight(JudgeTrump).size() == 5) {
       // membermapper.insertRank(10);
       ReturnTrump = AllTrump.RoyalStraight(JudgeTrump);
-      System.out.println("ロイヤルストレートフラッシュです");
+      System.out.println("ロイヤルストレートフラッシュです");// デバッグ用
     } else if (AllTrump.StraightFrash(JudgeTrump).size() == 5) {
       // membermapper.insertRank(9);
       ReturnTrump = AllTrump.StraightFrash(JudgeTrump);
-      System.out.println("ストレートフラッシュです");
+      System.out.println("ストレートフラッシュです");// デバッグ用
     } else if (AllTrump.FourCard(JudgeTrump).size() == 4) {
       // membermapper.insertRank(8);
       ReturnTrump = AllTrump.FourCard(JudgeTrump);
-      System.out.println("フォーカードです");
+      System.out.println("フォーカードです");// デバッグ用
     } else if (AllTrump.FullHouse(JudgeTrump).size() == 5) {
       // membermapper.insertRank(7);
       ReturnTrump = AllTrump.FullHouse(JudgeTrump);
-      System.out.println("フルハウスです");
+      System.out.println("フルハウスです");// デバッグ用
     } else if (AllTrump.Frash(JudgeTrump).size() == 5) {
       // membermapper.insertRank(6);
       ReturnTrump = AllTrump.Frash(JudgeTrump);
-      System.out.println("フラッシュです");
+      System.out.println("フラッシュです");// デバッグ用
     } else if (AllTrump.ResultStraight(AllTrump.Straight(JudgeTrump)).size() == 5) {
       // membermapper.insertRank(5);
       ReturnTrump = AllTrump.ResultStraight(AllTrump.Straight(JudgeTrump));
-      System.out.println("ストレートです");
+      System.out.println("ストレートです");// デバッグ用
     } else if (AllTrump.ThreeCard(JudgeTrump).size() == 3) {
       // membermapper.insertRank(4);
       ReturnTrump = AllTrump.ThreeCard(JudgeTrump);
-      System.out.println("スリーカードです");
+      System.out.println("スリーカードです");// デバッグ用
     } else if (AllTrump.TwoPair(JudgeTrump).size() == 4) {
-      // membermapper.insertRank(3);
+      // membermapper.insertRank(3);//デバッグ用
       ReturnTrump = AllTrump.TwoPair(JudgeTrump);
-      System.out.println("ツーペアです");
+      System.out.println("ツーペアです");// デバッグ用
     } else if (AllTrump.OnePair(JudgeTrump).size() == 2) {
       // membermapper.insertRank(2);
       ReturnTrump = AllTrump.OnePair(JudgeTrump);
-      System.out.println("ワンペアです");
+      System.out.println("ワンペアです");// デバッグ用
     } else {
       // membermapper.insertRank(1);
       ReturnTrump = AllTrump.noHand(JudgeTrump);
-      System.out.println("ノーペアです");
+      System.out.println("ノーペアです");// デバッグ用
     }
 
     // フォーカード・スリーカード・ツーペア・ワンペアの際に利用
     if (ReturnTrump.size() != 5) {
       AllTrump.addTrump(ReturnTrump, JudgeTrump);
+
     }
 
-    System.out.println(ReturnTrump.size());
+    AllTrump.AlltrumpPrint(ReturnTrump);// デバッグ用
     int id = member.getId();
 
     userresultmapper.insertResult(id, login_name, ReturnTrump.get(0).getNumber(), ReturnTrump.get(0).getSuit(),
@@ -287,20 +284,6 @@ public class CardgameController {
     String name = prin.getName();
     Member member = membermapper.selectNameMember(name);
     ArrayList<UserResult> resultTrump = userresultmapper.selectAllByResult();
-    for (UserResult result : resultTrump) {
-      System.out.println(result.getId());
-      System.out.println(result.getUsername());
-      System.out.println(result.getTs1());
-      System.out.println(result.getTn1());
-      System.out.println(result.getTs2());
-      System.out.println(result.getTn2());
-      System.out.println(result.getTs3());
-      System.out.println(result.getTn3());
-      System.out.println(result.getTs4());
-      System.out.println(result.getTn4());
-      System.out.println(result.getTs5());
-      System.out.println(result.getTn5());
-    }
     membermapper.updateByexistF(member);
     model.addAttribute("resultTrump", resultTrump);
     return "result.html";
