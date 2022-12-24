@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 //import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
@@ -18,4 +19,6 @@ public interface UserResultMapper {
   void insertResult(int id, String username, String tn1, String ts1, String tn2, String ts2, String tn3, String ts3,
       String tn4, String ts4, String tn5, String ts5);
 
+  @Delete("DELETE FROM UserResult")
+  void deleteUserResult();
 }

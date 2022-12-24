@@ -60,6 +60,9 @@ public class CardgameController {
     // TrumpTableのplaceを初期化する
     trumpmapper.initPlacebyTrumpTable();
 
+    // UserResultTableのデータ消去
+    userresultmapper.deleteUserResult();
+
     // model.addAttribute("members", members2);
     return "room1.html";
   }
