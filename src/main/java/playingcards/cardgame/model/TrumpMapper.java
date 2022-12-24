@@ -14,9 +14,12 @@ public interface TrumpMapper {
   @Select("SELECT * from trump")
   ArrayList<Trump> selectAllTrump();
 
-  @Select ("SELECT * from trump where id = #{id}")
+  @Select("SELECT * from trump where id = #{id}")
   Trump selectOneTrump(int id);
 
   @Update("UPDATE trump SET place = true WHERE id = #{id}")
   void updateByPlace(int id);
+
+  @Update("UPDATE trump SET place = false")
+  void initPlacebyTrumpTable();
 }

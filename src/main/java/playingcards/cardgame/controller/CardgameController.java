@@ -57,6 +57,9 @@ public class CardgameController {
     // update
     membermapper.updateByexistT(member);
 
+    // TrumpTableのplaceを初期化する
+    trumpmapper.initPlacebyTrumpTable();
+
     // model.addAttribute("members", members2);
     return "room1.html";
   }
