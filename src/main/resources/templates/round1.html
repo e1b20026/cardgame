@@ -9,7 +9,7 @@
       var sse = new EventSource('/Room/exist1');
       sse.onmessage = function (event) {
         console.log(event.data);
-        if (event.data == 2) {
+        if (event.data == 4) {
           document.getElementById("call").textContent = "続行";
           document.getElementById("drop").textContent = "降りる";
           document.getElementById("room_incomplete").textContent = "現在の参加人数は：" + event.data;
@@ -25,6 +25,8 @@
 </head>
 
 <body>
+  <h1 id="room_incomplete"></h1>
+
   round1です
   <div th:if="${hand1}">
     [[${hand1.suit}]], [[${hand1.number}]]
