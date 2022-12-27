@@ -43,6 +43,28 @@ public class AsyncCard {
     emitter.complete();// emitterの後始末．明示的にブラウザとの接続を一度切る．
   }
 
+  @Async
+  public void accessexist1User(SseEmitter emitter) throws IOException {
+    ArrayList<Member> members;
+    try {
+      members = membermapper.selectexit1TrueMember();
+      int count = 0;
+      for (Member member : members) {
+        if (member.getExist1() == true) {
+          count++;
+        }
+      }
+      emitter.send(count);
+      // sendによってcountがブラウザにpushされる
+      // 1秒STOP
+      TimeUnit.SECONDS.sleep(1);
+    } catch (InterruptedException e) {
+      // 例外の名前とメッセージだけ表示する
+      logger.warn("Exception:" + e.getClass().getName() + ":" + e.getMessage());
+    }
+    emitter.complete();// emitterの後始末．明示的にブラウザとの接続を一度切る．
+  }
+
   /*
    * @Async
    * public void accessexist2User(SseEmitter emitter) throws IOException {
