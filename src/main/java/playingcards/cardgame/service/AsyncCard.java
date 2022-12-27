@@ -95,63 +95,69 @@ public class AsyncCard {
     emitter.complete();// emitterの後始末．明示的にブラウザとの接続を一度切る．
   }
 
+  @Async
+  public void accessexist3User(SseEmitter emitter) throws IOException {
+    ArrayList<Member> members;
+    ArrayList<Member> resultMembers;
+    try {
+      members = membermapper.selectexist3TrueMember();
+      resultMembers = membermapper.selectresultTrueMember();
+      int count3 = 0;
+      int countR = 0;
+      for (Member member : members) {
+        if (member.getExist3() == true) {
+          count3++;
+        }
+      }
+      for (Member member : resultMembers) {
+        if (member.getResult() == true) {
+          countR++;
+        }
+      }
+      emitter.send(count3 + countR);
+      // sendによってcountがブラウザにpushされる
+      // 1秒STOP
+      TimeUnit.SECONDS.sleep(1);
+    } catch (InterruptedException e) {
+      // 例外の名前とメッセージだけ表示する
+      logger.warn("Exception:" + e.getClass().getName() + ":" + e.getMessage());
+    }
+    emitter.complete();// emitterの後始末．明示的にブラウザとの接続を一度切る．
+  }
 
-   @Async
-   public void accessexist3User(SseEmitter emitter) throws IOException {
-     ArrayList<Member> members;
-     ArrayList<Member> resultMembers;
-     try {
-       members = membermapper.selectexist3TrueMember();
-       resultMembers = membermapper.selectresultTrueMember();
-       int count3 = 0;
-       int countR = 0;
-       for (Member member : members) {
-         if (member.getExist3() == true) {
-           count3++;
-         }
-       }
-       for (Member member : resultMembers) {
-         if (member.getResult() == true) {
-           countR++;
-         }
-       }
-       emitter.send(count3 + countR);
-       // sendによってcountがブラウザにpushされる
-       // 1秒STOP
-       TimeUnit.SECONDS.sleep(1);
-     } catch (InterruptedException e) {
-       // 例外の名前とメッセージだけ表示する
-       logger.warn("Exception:" + e.getClass().getName() + ":" + e.getMessage());
-     }
-     emitter.complete();// emitterの後始末．明示的にブラウザとの接続を一度切る．
-   }
+  @Async
+  public void accessexist4User(SseEmitter emitter) throws IOException {
+    ArrayList<Member> members;
+    ArrayList<Member> resultMembers;
+    try {
+      members = membermapper.selectexist4TrueMember();
+      resultMembers = membermapper.selectresultTrueMember();
+      int count4 = 0;
+      int countR = 0;
+      for (Member member : members) {
+        if (member.getExist4() == true) {
+          count4++;
+        }
+      }
 
-   /*
-   *@Async
-   * public void accessexist4User(SseEmitter emitter) throws IOException {
-   * ArrayList<Member> members;
-   * try {
-   * members = membermapper.selectexist4TrueMember();
-   * int count = 0;
-   * for (Member member : members) {
-   * if (member.getExist() == true) {
-   * count++;
-   * }
-   * }
-   * emitter.send(count);
-   * // sendによってcountがブラウザにpushされる
-   * // 1秒STOP
-   * TimeUnit.SECONDS.sleep(1);
-   * } catch (InterruptedException e) {
-   * // 例外の名前とメッセージだけ表示する
-   * logger.warn("Exception:" + e.getClass().getName() + ":" + e.getMessage());
-   * }
-   * emitter.complete();// emitterの後始末．明示的にブラウザとの接続を一度切る．
-   * }
-   */
+      for (Member member : resultMembers) {
+        if (member.getResult() == true) {
+          countR++;
+        }
+      }
+      emitter.send(count4 + countR);
+      // sendによってcountがブラウザにpushされる
+      // 1秒STOP
+      TimeUnit.SECONDS.sleep(1);
+    } catch (InterruptedException e) {
+      // 例外の名前とメッセージだけ表示する
+      logger.warn("Exception:" + e.getClass().getName() + ":" + e.getMessage());
+    }
+    emitter.complete();// emitterの後始末．明示的にブラウザとの接続を一度切る．
+  }
 
-   @Async
-   public void accessResultUser(SseEmitter emitter) throws IOException {
+  @Async
+  public void accessResultUser(SseEmitter emitter) throws IOException {
     ArrayList<Member> members;
     try {
       members = membermapper.selectresultTrueMember();
@@ -170,5 +176,5 @@ public class AsyncCard {
       logger.warn("Exception:" + e.getClass().getName() + ":" + e.getMessage());
     }
     emitter.complete();// emitterの後始末．明示的にブラウザとの接続を一度切る．
-   }
+  }
 }
