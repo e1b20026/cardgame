@@ -47,27 +47,27 @@ public class Member {
     this.exist1 = exist1;
   }
 
-  public boolean getexist2() {
+  public boolean getExist2() {
     return exist2;
   }
 
-  public void setRound2(boolean exist2) {
+  public void setExist2(boolean exist2) {
     this.exist2 = exist2;
   }
 
-  public boolean getexist3() {
+  public boolean getExist3() {
     return exist3;
   }
 
-  public void setexist3(boolean exist3) {
+  public void setExist3(boolean exist3) {
     this.exist3 = exist3;
   }
 
-  public boolean getexist4() {
+  public boolean getExist4() {
     return exist4;
   }
 
-  public void setexist4(boolean exist4) {
+  public void setExist4(boolean exist4) {
     this.exist4 = exist4;
   }
 

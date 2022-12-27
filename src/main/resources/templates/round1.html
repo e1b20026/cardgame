@@ -10,8 +10,8 @@
       sse.onmessage = function (event) {
         console.log(event.data);
         if (event.data == 2) {
-          document.getElementById("call").textContent = "続行"
-          document.getElementById("drop").textContent = "降りる"
+          document.getElementById("call").textContent = "続行";
+          document.getElementById("drop").textContent = "降りる";
           document.getElementById("room_incomplete").textContent = "現在の参加人数は：" + event.data;
         }
         else {
