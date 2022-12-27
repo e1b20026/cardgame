@@ -3,10 +3,12 @@ package playingcards.cardgame.model;
 public class Member {
   int id;
   String userName;
-  boolean exist;
+  boolean gameexist;
+  boolean exist1;
   boolean exist2;
   boolean exist3;
   boolean exist4;
+  boolean result;
   int rank;
 
   // Thymeleafでフィールドを扱うためにはgetter/setterが必ず必要
@@ -29,12 +31,20 @@ public class Member {
     this.userName = userName;
   }
 
-  public boolean getExist() {
-    return exist;
+  public boolean gameExist() {
+    return gameexist;
   }
 
-  public void setExist(boolean exist) {
-    this.exist = exist;
+  public void getGameexist(boolean gameexist) {
+    this.gameexist = gameexist;
+  }
+
+  public boolean getExist1() {
+    return exist1;
+  }
+
+  public void setExist1(boolean exist1) {
+    this.exist1 = exist1;
   }
 
   public boolean getexist2() {
@@ -75,6 +85,14 @@ public class Member {
 
   public void setRank(int rank) {
     this.rank = rank;
+  }
+
+  public boolean getResult() {
+    return result;
+  }
+
+  public void setResult(boolean result) {
+    this.result = result;
   }
 
 }
