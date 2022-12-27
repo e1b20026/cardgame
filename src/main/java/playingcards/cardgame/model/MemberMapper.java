@@ -32,6 +32,9 @@ public interface MemberMapper {
   @Select("SELECT * from member where exist4 = true")
   ArrayList<Member> selectexist4TrueMember();
 
+  @Select("SELECT * from member where result = true")
+  ArrayList<Member> selectresultTrueMember();
+
  // @Select("SELECT * from member where exist = false")
  // ArrayList<Member> selectFalseMember();
 
@@ -53,5 +56,6 @@ public interface MemberMapper {
   @Update("UPDATE member SET exist4 = true WHERE id = #{id}")
   void updateByexist4T(Member member);
 
-
+  @Update("UPDATE member SET result = true WHERE id = #{id}")
+  void updateByresultT(Member member);
 }
