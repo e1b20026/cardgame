@@ -54,8 +54,10 @@ public class CardgameController {
 
     String login_name = prin.getName();
     Member member = membermapper.selectNameMember(login_name);
+    // 各existカラムの初期化
+    membermapper.updateByexistF(member);
     // update
-   // membermapper.updateByexistT(member);
+    membermapper.updateBygameexistT(member);
 
     // TrumpTableのplaceを初期化する
     trumpmapper.initPlacebyTrumpTable();
@@ -295,75 +297,18 @@ public class CardgameController {
     String name = prin.getName();
     Member member = membermapper.selectNameMember(name);
     ArrayList<UserResult> resultTrump = userresultmapper.selectAllByResult();
-  //  membermapper.updateByexistF(member);
+    // membermapper.updateByexistF(member);
     model.addAttribute("resultTrump", resultTrump);
     return "result.html";
   }
 
-/*  @GetMapping("/exist")
-public SseEmitter showexist() {
-  // infoレベルでログを出力する
-  logger.info("exist");
-  final SseEmitter sseEmitter = new SseEmitter();
-  try {
-    this.User.loginUser(sseEmitter);
-  } catch (IOException e) {
-    e.printStackTrace();
-  }
-  return sseEmitter;
-
-}
-
-
-@GetMapping("/exist2")
-public SseEmitter showexist2() {
-  // infoレベルでログを出力する
-  logger.info("exist2");
-  final SseEmitter sseEmitter = new SseEmitter();
-  try {
-    this.User.accessexist2User(sseEmitter);
-  } catch (IOException e) {
-    e.printStackTrace();
-  }
-  return sseEmitter;
-
-}
-
-@GetMapping("/exist3")
-public SseEmitter showexist3() {
-  // infoレベルでログを出力する
-  logger.info("exist3");
-  final SseEmitter sseEmitter = new SseEmitter();
-  try {
-    this.User.accessexist3User(sseEmitter);
-  } catch (IOException e) {
-    e.printStackTrace();
-  }
-  return sseEmitter;
-
-}
-
-@GetMapping("/exist4")
-public SseEmitter showexist4() {
-  // infoレベルでログを出力する
-  logger.info("exist4");
-  final SseEmitter sseEmitter = new SseEmitter();
-  try {
-    this.User.accessexist4User(sseEmitter);
-  } catch (IOException e) {
-    e.printStackTrace();
-  }
-  return sseEmitter;
-
-}
-
-  @GetMapping("/sendresult")
-  public SseEmitter showresult() {
+  @GetMapping("/exist")
+  public SseEmitter showexist() {
     // infoレベルでログを出力する
-    logger.info("result");
+    logger.info("exist");
     final SseEmitter sseEmitter = new SseEmitter();
     try {
-      this.User.resultUser(sseEmitter);
+      this.User.accessGameExistUser(sseEmitter);
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -371,5 +316,62 @@ public SseEmitter showexist4() {
 
   }
 
-  */
+  /*
+   * @GetMapping("/exist2")
+   * public SseEmitter showexist2() {
+   * // infoレベルでログを出力する
+   * logger.info("exist2");
+   * final SseEmitter sseEmitter = new SseEmitter();
+   * try {
+   * this.User.accessexist2User(sseEmitter);
+   * } catch (IOException e) {
+   * e.printStackTrace();
+   * }
+   * return sseEmitter;
+   * 
+   * }
+   * 
+   * @GetMapping("/exist3")
+   * public SseEmitter showexist3() {
+   * // infoレベルでログを出力する
+   * logger.info("exist3");
+   * final SseEmitter sseEmitter = new SseEmitter();
+   * try {
+   * this.User.accessexist3User(sseEmitter);
+   * } catch (IOException e) {
+   * e.printStackTrace();
+   * }
+   * return sseEmitter;
+   * 
+   * }
+   * 
+   * @GetMapping("/exist4")
+   * public SseEmitter showexist4() {
+   * // infoレベルでログを出力する
+   * logger.info("exist4");
+   * final SseEmitter sseEmitter = new SseEmitter();
+   * try {
+   * this.User.accessexist4User(sseEmitter);
+   * } catch (IOException e) {
+   * e.printStackTrace();
+   * }
+   * return sseEmitter;
+   * 
+   * }
+   * 
+   * @GetMapping("/sendresult")
+   * public SseEmitter showresult() {
+   * // infoレベルでログを出力する
+   * logger.info("result");
+   * final SseEmitter sseEmitter = new SseEmitter();
+   * try {
+   * this.User.resultUser(sseEmitter);
+   * } catch (IOException e) {
+   * e.printStackTrace();
+   * }
+   * return sseEmitter;
+   * 
+   * }
+   * 
+   */
 }
