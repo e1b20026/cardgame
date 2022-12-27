@@ -49,13 +49,21 @@ public class CardgameController {
 
   private final Logger logger = LoggerFactory.getLogger(CardgameController.class);
 
-  @GetMapping("/room1")
-  public String room1(ModelMap model, Principal prin) {
-
+  @GetMapping("/rule")
+  public String rule(ModelMap model, Principal prin) {
     String login_name = prin.getName();
     Member member = membermapper.selectNameMember(login_name);
     // 各existカラムの初期化
     membermapper.updateByexistF(member);
+    return "rule.html";
+  }
+
+  @GetMapping("/room")
+  public String room(ModelMap model, Principal prin) {
+
+    String login_name = prin.getName();
+    Member member = membermapper.selectNameMember(login_name);
+
     // update
     membermapper.updateBygameexistT(member);
 
@@ -65,8 +73,7 @@ public class CardgameController {
     // UserResultTableのデータ消去
     userresultmapper.deleteUserResult();
 
-    // model.addAttribute("members", members2);
-    return "room1.html";
+    return "room.html";
   }
 
   @GetMapping("/round1")
