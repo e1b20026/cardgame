@@ -1,10 +1,12 @@
 CREATE TABLE member (
     id IDENTITY,
     userName VARCHAR NOT NULL,
-    exist boolean NOT NULL,
+    gameexist boolean NOT NULL,
+    exist1 boolean NOT NULL,
     exist2 boolean NOT NULL,
     exist3 boolean NOT NULL,
     exist4 boolean NOT NULL,
+    result boolean NOT NULL,
     rank INT
 );
 

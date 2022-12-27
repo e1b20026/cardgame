@@ -1,7 +1,7 @@
-INSERT INTO member (userName,exist,exist2,exist3,exist4) VALUES ('kitamoto','FALSE','FALSE','FALSE','FALSE');
-INSERT INTO member (userName,exist,exist2,exist3,exist4) VALUES ('komaki','FALSE','FALSE','FALSE','FALSE');
-INSERT INTO member (userName,exist,exist2,exist3,exist4) VALUES ('ogawa','FALSE','FALSE','FALSE','FALSE');
-INSERT INTO member (userName,exist,exist2,exist3,exist4) VALUES ('kurokawa','FALSE','FALSE','FALSE','FALSE');
+INSERT INTO member (userName, gameexist, exist1,exist2,exist3,exist4, result) VALUES ('kitamoto','FALSE','FALSE','FALSE','FALSE','FALSE','FALSE');
+INSERT INTO member (userName, gameexist, exist1,exist2,exist3,exist4, result) VALUES ('komaki','FALSE','FALSE','FALSE','FALSE','FALSE','FALSE');
+INSERT INTO member (userName, gameexist, exist1,exist2,exist3,exist4, result) VALUES ('ogawa','FALSE','FALSE','FALSE','FALSE','FALSE','FALSE');
+INSERT INTO member (userName, gameexist, exist1,exist2,exist3,exist4, result) VALUES ('kurokawa','FALSE','FALSE','FALSE','FALSE','FALSE','FALSE');
 
 INSERT INTO trump (suit, number, place) VALUES ('Heart', 'A', 'FALSE');
 INSERT INTO trump (suit, number, place) VALUES ('Heart', '2', 'FALSE');
@@ -64,4 +64,3 @@ INSERT INTO randtrump (id) VALUES (2);
 INSERT INTO randtrump (id) VALUES (3);
 INSERT INTO randtrump (id) VALUES (4);
 INSERT INTO randtrump (id) VALUES (5);
-
