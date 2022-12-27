@@ -38,7 +38,7 @@ public interface MemberMapper {
   // @Select("SELECT * from member where exist = false")
   // ArrayList<Member> selectFalseMember();
 
-  @Update("UPDATE member SET gameexist = false, exist1 = false, exist2 = false, exist3 = false, exist4 = false WHERE id = #{id}")
+  @Update("UPDATE member SET gameexist = false, exist1 = false, exist2 = false, exist3 = false, exist4 = false,result = false WHERE id = #{id}")
   void updateByexistF(Member member);
 
   @Update("UPDATE member SET gameexist = true WHERE id = #{id}")

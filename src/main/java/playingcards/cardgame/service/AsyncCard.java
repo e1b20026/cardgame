@@ -33,6 +33,7 @@ public class AsyncCard {
         }
       }
       emitter.send(count);
+
       // sendによってcountがブラウザにpushされる
       // 1秒STOP
       TimeUnit.SECONDS.sleep(1);
@@ -55,6 +56,7 @@ public class AsyncCard {
         }
       }
       emitter.send(count);
+
       // sendによってcountがブラウザにpushされる
       // 1秒STOP
       TimeUnit.SECONDS.sleep(1);
@@ -85,6 +87,7 @@ public class AsyncCard {
         }
       }
       emitter.send(count2 + countR);
+
       // sendによってcountがブラウザにpushされる
       // 1秒STOP
       TimeUnit.SECONDS.sleep(1);
@@ -115,6 +118,7 @@ public class AsyncCard {
         }
       }
       emitter.send(count3 + countR);
+
       // sendによってcountがブラウザにpushされる
       // 1秒STOP
       TimeUnit.SECONDS.sleep(1);
@@ -146,6 +150,7 @@ public class AsyncCard {
         }
       }
       emitter.send(count4 + countR);
+
       // sendによってcountがブラウザにpushされる
       // 1秒STOP
       TimeUnit.SECONDS.sleep(1);
@@ -168,6 +173,7 @@ public class AsyncCard {
         }
       }
       emitter.send(count);
+
       // sendによってcountがブラウザにpushされる
       // 1秒STOP
       TimeUnit.SECONDS.sleep(1);
