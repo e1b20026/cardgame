@@ -17,6 +17,9 @@ public interface MemberMapper {
   @Select("SELECT * from member where userName = #{name}")
   Member selectNameMember(String name);
 
+  @Select("SELECT * from member where gameexist = true")
+  ArrayList<Member> selectgameexistTrueMember();
+
  // @Select("SELECT * from member where exist = true")
  // ArrayList<Member> selectTrueMember();
 
@@ -32,11 +35,14 @@ public interface MemberMapper {
  // @Select("SELECT * from member where exist = false")
  // ArrayList<Member> selectFalseMember();
 
+  @Update("UPDATE member SET gameexist = true WHERE id = #{id}")
+ void updateBygameexistT(Member member);
+
 //  @Update("UPDATE member SET exist = true WHERE id = #{id}")
 //  void updateByexistT(Member member);
 
- // @Update("UPDATE member SET exist = false, exist2 = false, exist3 = false, exist4 = false WHERE id = #{id}")
- // void updateByexistF(Member member);
+  @Update("UPDATE member SET gameexist = false, exist1 = false, exist2 = false, exist3 = false, exist4 = false WHERE id = #{id}")
+  void updateByexistF(Member member);
 
   @Update("UPDATE member SET exist2 = true WHERE id = #{id}")
   void updateByexist2T(Member member);
@@ -46,4 +52,6 @@ public interface MemberMapper {
 
   @Update("UPDATE member SET exist4 = true WHERE id = #{id}")
   void updateByexist4T(Member member);
+
+
 }

@@ -31,11 +31,11 @@ public class Member {
     this.userName = userName;
   }
 
-  public boolean gameExist() {
+  public boolean getGameexist() {
     return gameexist;
   }
 
-  public void getGameexist(boolean gameexist) {
+  public void setGameexist(boolean gameexist) {
     this.gameexist = gameexist;
   }
 
