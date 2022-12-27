@@ -70,7 +70,11 @@ public class CardgameController {
   }
 
   @GetMapping("/round1")
-  public String round1(ModelMap model) {
+  public String round1(Principal prin, ModelMap model) {
+    String login_name = prin.getName();
+    Member member = membermapper.selectNameMember(login_name);
+    membermapper.updateByexist1T(member);
+
     Random random = new Random();
     int num1 = random.nextInt(52) + 1;
     int num2 = random.nextInt(52) + 1;
@@ -314,7 +318,19 @@ public class CardgameController {
       e.printStackTrace();
     }
     return sseEmitter;
+  }
 
+  @GetMapping("/exist1")
+  public SseEmitter showexist1() {
+    // infoレベルでログを出力する
+    logger.info("exist");
+    final SseEmitter sseEmitter = new SseEmitter();
+    try {
+      this.User.accessexist1User(sseEmitter);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    return sseEmitter;
   }
 
   /*
