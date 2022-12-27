@@ -18,7 +18,7 @@ public interface RandTrumpMapper {
   RandTrump selectIdRandTrump(int id);
 
   @Select("SELECT * from randtrump where suit is not null")
-  RandTrump selectIdRandTrumpNull();
+  ArrayList<RandTrump> selectIdRandTrumpNotNull();
 
   @Update("UPDATE randtrump SET suit = #{trump.suit},  number = #{trump.number} where id = #{id}")
   boolean updateIdRandTrump(Trump trump, int id);
