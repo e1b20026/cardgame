@@ -367,6 +367,34 @@ public class AllTrump {
     }
   }
 
+  // カードが重複していないかを確認するメソッド
+  public static boolean checkTrump(ArrayList<AllTrump> trump) {
+    int count = 0;
+    for (int i = 0; i < trump.size(); i++) {
+      for (int j = 0; j < trump.size(); j++) {
+        if (i != j && trump.get(i).id == trump.get(j).id) {
+          count++;
+        }
+      }
+      if (count >= 1) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  // カードが重複していた場合にのみ利用、重複しているカードを除去するメソッド
+  public static void deleteDoubleTrump(ArrayList<AllTrump> trump) {
+    for (int i = 0; i < trump.size(); i++) {
+      for (int j = 0; j < trump.size(); j++) {
+        if (i != j && trump.get(i).id == trump.get(j).id) {
+          trump.remove(i);
+          break;
+        }
+      }
+    }
+  }
+
   public String getNumber() {
     return this.number;
   }

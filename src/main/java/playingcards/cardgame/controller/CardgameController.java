@@ -266,7 +266,12 @@ public class CardgameController {
     // フォーカード・スリーカード・ツーペア・ワンペアの際に利用
     if (ReturnTrump.size() != 5) {
       AllTrump.addTrump(ReturnTrump, JudgeTrump);
+    }
 
+    // カード重複バグ回避
+    while (AllTrump.checkTrump(ReturnTrump) == false) {
+      AllTrump.deleteDoubleTrump(ReturnTrump);
+      AllTrump.addTrump(ReturnTrump, JudgeTrump);
     }
 
     AllTrump.AlltrumpPrint(ReturnTrump);// デバッグ用
