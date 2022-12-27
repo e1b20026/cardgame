@@ -297,6 +297,7 @@ public class CardgameController {
     String name = prin.getName();
     Member member = membermapper.selectNameMember(name);
     ArrayList<UserResult> resultTrump = userresultmapper.selectAllByResult();
+    membermapper.updateByresultT(member);
     // membermapper.updateByexistF(member);
     model.addAttribute("resultTrump", resultTrump);
     return "result.html";
@@ -328,9 +329,9 @@ public class CardgameController {
    * e.printStackTrace();
    * }
    * return sseEmitter;
-   * 
+   *
    * }
-   * 
+   *
    * @GetMapping("/exist3")
    * public SseEmitter showexist3() {
    * // infoレベルでログを出力する
@@ -342,9 +343,9 @@ public class CardgameController {
    * e.printStackTrace();
    * }
    * return sseEmitter;
-   * 
+   *
    * }
-   * 
+   *
    * @GetMapping("/exist4")
    * public SseEmitter showexist4() {
    * // infoレベルでログを出力する
@@ -356,22 +357,21 @@ public class CardgameController {
    * e.printStackTrace();
    * }
    * return sseEmitter;
-   * 
+   *
    * }
-   * 
-   * @GetMapping("/sendresult")
-   * public SseEmitter showresult() {
-   * // infoレベルでログを出力する
-   * logger.info("result");
-   * final SseEmitter sseEmitter = new SseEmitter();
-   * try {
-   * this.User.resultUser(sseEmitter);
-   * } catch (IOException e) {
-   * e.printStackTrace();
-   * }
-   * return sseEmitter;
-   * 
-   * }
-   * 
    */
+
+  @GetMapping("/sendresult")
+  public SseEmitter showresult() {
+    // infoレベルでログを出力する
+    logger.info("result");
+    final SseEmitter sseEmitter = new SseEmitter();
+    try {
+      this.User.accessResultUser(sseEmitter);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    return sseEmitter;
+  }
+
 }
