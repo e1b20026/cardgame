@@ -9,7 +9,7 @@
       var sse = new EventSource('/Room/exist4');
       sse.onmessage = function (event) {
         console.log(event.data);
-        if (event.data == 2) {
+        if (event.data == 4) {
           document.getElementById("result").textContent = "ゲーム終了"
           document.getElementById("room_incomplete").textContent = "現在の参加人数は：" + event.data;
         }

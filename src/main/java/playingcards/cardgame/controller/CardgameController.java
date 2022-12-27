@@ -360,21 +360,20 @@ public class CardgameController {
     return sseEmitter;
 
   }
-  /*
-   * @GetMapping("/exist4")
-   * public SseEmitter showexist4() {
-   * // infoレベルでログを出力する
-   * logger.info("exist4");
-   * final SseEmitter sseEmitter = new SseEmitter();
-   * try {
-   * this.User.accessexist4User(sseEmitter);
-   * } catch (IOException e) {
-   * e.printStackTrace();
-   * }
-   * return sseEmitter;
-   *
-   * }
-   */
+
+  @GetMapping("/exist4")
+  public SseEmitter showexist4() {
+    // infoレベルでログを出力する
+    logger.info("exist4");
+    final SseEmitter sseEmitter = new SseEmitter();
+    try {
+      this.User.accessexist4User(sseEmitter);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    return sseEmitter;
+
+  }
 
   @GetMapping("/sendresult")
   public SseEmitter showresult() {
