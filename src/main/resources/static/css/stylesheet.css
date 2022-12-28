@@ -37,6 +37,11 @@ li {
   text-align: center;
 }
 
+.porker-bg {
+  background-image: url(../img/porker-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 /* トップページ(index.html) */
 
@@ -209,4 +214,144 @@ li {
 .porker-notes {
   padding-top: 0;
   border-bottom: 1px solid gray;
+}
+
+/* round1.html */
+
+.round1-page {
+  min-height: 100vh;
+}
+
+.contents {
+  display: flex;
+  justify-content: end;
+  padding-top: 15px;
+}
+
+.circle-bg {
+  text-align: center;
+  border-radius: 50%;
+  background-color: black;
+  height: 100px;
+  width: 100px;
+  margin: 0 10px;
+}
+
+
+
+.up:empty {
+  height: 47px;
+}
+
+.player-count-show .up {
+  position: relative;
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+  top: 10px;
+}
+
+
+.player-count-show .down {
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+}
+
+.round-time .up {
+  position: relative;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  top: 20px;
+}
+
+.round-time .down {
+  position: relative;
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+  top: 8px;
+}
+
+.trump {
+  height: 150px;
+  margin: 0 10px;
+}
+
+.trump-set,
+.my-trump-area {
+  display: flex;
+  justify-content: center;
+}
+
+.trump-set {
+  margin: 0 200px;
+}
+
+.random-trump-wrapper {
+  padding-top: 10px;
+}
+
+.my-trump-wrapper {
+  padding-top: 50px;
+}
+
+.rand-trump:empty {
+  border: 2px solid white;
+  height: 150px;
+  width: 110px;
+  margin: 0 10px;
+}
+
+
+
+.trump-text p {
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+}
+
+#fold:empty,
+#check:empty {
+  visibility: hidden;
+}
+
+.fold-button {
+  background-color: blue;
+  box-shadow: 0 5px 0 rgb(2, 2, 205);
+}
+
+.fold-button:hover {
+  box-shadow: 0 0 0 rgb(2, 2, 205);
+}
+
+.check-button {
+  background-color: orange;
+  box-shadow: 0 5px 0 #c37800;
+}
+
+.check-button:hover {
+  box-shadow: 0 0 0 #b46f00;
+}
+
+.circle-btn {
+  display: inline-block;
+  border-radius: 50%;
+  text-decoration: none;
+  text-align: center;
+  transition: .4s;
+}
+
+.circle-btn:hover {
+  transform: translateY(4px);
+}
+
+.fold-button,
+.check-button {
+  color: white;
+  font-weight: bold;
+  line-height: 100px;
 }
