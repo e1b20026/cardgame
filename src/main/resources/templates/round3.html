@@ -4,19 +4,20 @@
 <head>
   <meta charset="utf-8">
   <title>Cardgame</title>
+  <link rel="stylesheet" href="../css/stylesheet.css">
   <script>
     window.onload = function () {
-      var sse = new EventSource('/Room/exist3');
+      var sse = new EventSource('/Room/exist2');
       sse.onmessage = function (event) {
         console.log(event.data);
         if (event.data == 4) {
-          document.getElementById("call").textContent = "続行"
-          document.getElementById("drop").textContent = "降りる"
-          document.getElementById("room_incomplete").textContent = "現在の参加人数は：" + event.data;
+          document.getElementById("check").textContent = "チェック";
+          document.getElementById("fold").textContent = "フォールド";
+          document.getElementById("room_incomplete").textContent = event.data + "/4";
         }
         else {
           //操作対象のDOMを取得
-          document.getElementById("room_incomplete").textContent = "現在の参加人数は：" + event.data;//ノードの追加
+          document.getElementById("room_incomplete").textContent = event.data + "/4";//ノードの追加
         }
       }
     }
@@ -25,32 +26,64 @@
 </head>
 
 <body>
-  <h1 id="room_incomplete"></h1>
+  <div class="round1-page porker-bg">
+    <div class="contents">
+      <div class="round-time circle-bg">
+        <p class="up">ラウンド</p>
+        <p class="down">2</p>
+      </div>
+      <div class="player-count-show circle-bg">
+        <h1 id="room_incomplete" class="up"></h1>
+        <p class="down">接続人数</p>
+      </div>
+    </div>
 
-  round3です
-  自分の手札
-  <div th:if="${myHand1}">
-    [[${myHand1.suit}]], [[${myHand1.number}]]
-  </div>
-  <div th:if="${myHand2}">
-    [[${myHand2.suit}]], [[${myHand2.number}]]
-  </div>
 
-  CPUの手札
-  <div th:if="${cpuHand1}">
-    [[${cpuHand1.suit}]], [[${cpuHand1.number}]]
+    <div class="trump-set random-trump-wrapper">
+      <div class="rand-trump">
+        <div th:if="${cpuHand1}">
+          <img class="trump" th:src="@{'../img/' + ${cpuHand1.suit} + ${cpuHand1.number} + '.png'}">
+        </div>
+      </div>
+      <div class="rand-trump">
+        <div th:if="${cpuHand2}">
+          <img class="trump" th:src="@{'../img/' + ${cpuHand2.suit} + ${cpuHand2.number} + '.png'}">
+        </div>
+      </div>
+      <div class="rand-trump">
+        <div th:if="${cpuHand3}">
+          <img class="trump" th:src="@{'../img/' + ${cpuHand3.suit} + ${cpuHand3.number} + '.png'}">
+        </div>
+      </div>
+      <div class="rand-trump">
+        <div th:if="${cpuHand4}">
+          <img class="trump" th:src="@{'../img/' + ${cpuHand4.suit} + ${cpuHand4.number} + '.png'}">
+        </div>
+      </div>
+      <div class="rand-trump"></div>
+    </div>
+    <div class="trump-text">
+      <p>全プレイヤー共通カード</p>
+    </div>
+    <div class="my-trump-area my-trump-wrapper">
+      <a id="fold" href="/Room/result" class="circle-bg fold-button circle-btn"></a>
+
+      <div class="trump-set">
+        <div th:if="${myHand1}">
+          <img class="trump" th:src="@{'../img/' + ${myHand1.suit} + ${myHand1.number} + '.png'}">
+        </div>
+        <div th:if="${myHand2}">
+          <img class="trump" th:src="@{'../img/' + ${myHand2.suit} + ${myHand2.number} + '.png'}">
+        </div>
+      </div>
+      <a id="check" th:href="@{/Room/round4(myHand1=${myHand1.id},myHand2=${myHand2.id})}"
+        class="circle-bg check-button circle-btn"></a>
+    </div>
+
+    <div class="trump-text">
+      <p>あなたのカード</p>
+    </div>
   </div>
-  <div th:if="${cpuHand2}">
-    [[${cpuHand2.suit}]], [[${cpuHand2.number}]]
-  </div>
-  <div th:if="${cpuHand3}">
-    [[${cpuHand3.suit}]], [[${cpuHand3.number}]]
-  </div>
-  <div th:if="${cpuHand4}">
-    [[${cpuHand4.suit}]], [[${cpuHand4.number}]]
-  </div>
-  <a id="call" th:href="@{/Room/round4(myHand1=${myHand1.id},myHand2=${myHand2.id})}"></a>
-  <a id="drop" href="/Room/result"></a>
 </body>
 
 </html>
