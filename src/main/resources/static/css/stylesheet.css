@@ -283,6 +283,7 @@ li {
 .my-trump-area {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .trump-set {
@@ -350,8 +351,28 @@ li {
 }
 
 .fold-button,
-.check-button {
+.check-button,
+.result-button-right {
   color: white;
   font-weight: bold;
   line-height: 100px;
+}
+
+.result-button-left,
+.result-button-right {
+  background-color: red;
+  box-shadow: 0 5px 0 rgb(179, 1, 1);
+}
+
+.result-button-right:hover {
+  box-shadow: 0 0 0 rgb(179, 1, 1);
+}
+
+.result-button-left,
+.result-button-left:empty {
+  visibility: hidden;
+}
+
+.result-button-right:empty {
+  visibility: hidden;
 }

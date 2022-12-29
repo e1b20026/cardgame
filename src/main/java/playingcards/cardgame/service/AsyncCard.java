@@ -141,9 +141,10 @@ public class AsyncCard {
       for (Member member : members) {
         if (member.getExist4() == true) {
           count4++;
+        } else {
+          System.out.println("count4" + count4);
         }
       }
-
       for (Member member : resultMembers) {
         if (member.getResult() == true) {
           countR++;

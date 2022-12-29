@@ -298,6 +298,17 @@ public class CardgameController {
     // update
     membermapper.updateByexist4T(member);
 
+    RandTrump cpuRandHand1 = randtrumpmapper.selectIdRandTrump(1);
+    RandTrump cpuRandHand2 = randtrumpmapper.selectIdRandTrump(2);
+    RandTrump cpuRandHand3 = randtrumpmapper.selectIdRandTrump(3);
+    RandTrump cpuRandHand4 = randtrumpmapper.selectIdRandTrump(4);
+    RandTrump cpuRandHand5 = randtrumpmapper.selectIdRandTrump(5);
+
+    model.addAttribute("cpuHand1", cpuRandHand1);
+    model.addAttribute("cpuHand2", cpuRandHand2);
+    model.addAttribute("cpuHand3", cpuRandHand3);
+    model.addAttribute("cpuHand4", cpuRandHand4);
+    model.addAttribute("cpuHand5", cpuRandHand5);
     model.addAttribute("myHand1", hand1);
     model.addAttribute("myHand2", hand2);
     return "round4.html";
