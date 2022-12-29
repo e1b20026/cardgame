@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="../css/stylesheet.css">
   <script>
     window.onload = function () {
-      var sse = new EventSource('/Room/exist2');
+      var sse = new EventSource('/Room/exist3');
       sse.onmessage = function (event) {
         console.log(event.data);
         if (event.data == 4) {
@@ -30,7 +30,7 @@
     <div class="contents">
       <div class="round-time circle-bg">
         <p class="up">ラウンド</p>
-        <p class="down">2</p>
+        <p class="down">3</p>
       </div>
       <div class="player-count-show circle-bg">
         <h1 id="room_incomplete" class="up"></h1>
