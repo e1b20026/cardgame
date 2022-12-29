@@ -352,7 +352,8 @@ li {
 
 .fold-button,
 .check-button,
-.result-button-right {
+.result-button-right,
+.result-link-button {
   color: white;
   font-weight: bold;
   line-height: 100px;
@@ -375,4 +376,87 @@ li {
 
 .result-button-right:empty {
   visibility: hidden;
+}
+
+/* result.html */
+.result-page {
+  min-height: 100vh;
+}
+
+.final-ranking-list {
+  text-align: center;
+  padding: 30px 0 0;
+}
+
+
+.ranking {
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+.user-name {
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+.final-trump-list {
+  display: flex;
+}
+
+.final-trump {
+  height: 80px;
+  margin: 0 5px;
+}
+
+.role-name {
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+.final-player-table {
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+  margin: 0 10px;
+  margin: 0 auto;
+}
+
+.rank-title {
+  padding: 0 50px;
+}
+
+.guest-title {
+  padding: 0 50px;
+}
+
+.myTrump-title {
+  padding: 0 50px;
+}
+
+.Role-title {
+  padding: 0 50px;
+}
+
+.final-player-table tr td {
+  padding: 10px 20px;
+}
+
+.result-button-area {
+  display: flex;
+  justify-content: end;
+}
+
+.result-link-button {
+  background-color: rgb(49, 49, 49);
+  box-shadow: 0 5px 0 black;
+}
+
+.result-link-button:hover {
+  box-shadow: 0 0 0 black;
 }
