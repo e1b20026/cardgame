@@ -6,8 +6,7 @@ CREATE TABLE member (
     exist2 boolean NOT NULL,
     exist3 boolean NOT NULL,
     exist4 boolean NOT NULL,
-    result boolean NOT NULL,
-    rank INT
+    result boolean NOT NULL
 );
 
 CREATE TABLE trump (
@@ -37,5 +36,7 @@ CREATE TABLE userresult (
   ts4 VARCHAR NOT NULL,
   tn5 VARCHAR NOT NULL,
   ts5 VARCHAR NOT NULL,
+  rank INT,
+  roleName VARCHAR,
   primary key(id)
 );

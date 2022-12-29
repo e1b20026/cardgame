@@ -234,44 +234,56 @@ public class CardgameController {
     AllTrump.sorted(JudgeTrump);
     // ロイヤルストレートかどうか
 
+    int rank = 1;
+    String role;
+
     if (AllTrump.RoyalStraight(JudgeTrump).size() == 5) {
-      // membermapper.insertRank(10);
+      rank = 10;
+      role = "ロイヤルストレートフラッシュ";
       ReturnTrump = AllTrump.RoyalStraight(JudgeTrump);
       System.out.println("ロイヤルストレートフラッシュです");// デバッグ用
     } else if (AllTrump.StraightFrash(JudgeTrump).size() == 5) {
-      // membermapper.insertRank(9);
+      rank = 9;
+      role = "ストレートフラッシュ";
       ReturnTrump = AllTrump.StraightFrash(JudgeTrump);
       System.out.println("ストレートフラッシュです");// デバッグ用
     } else if (AllTrump.FourCard(JudgeTrump).size() == 4) {
-      // membermapper.insertRank(8);
+      rank = 8;
+      role = "フォーカード";
       ReturnTrump = AllTrump.FourCard(JudgeTrump);
       System.out.println("フォーカードです");// デバッグ用
     } else if (AllTrump.FullHouse(JudgeTrump).size() == 5) {
-      // membermapper.insertRank(7);
+      rank = 7;
+      role = "フルハウス";
       ReturnTrump = AllTrump.FullHouse(JudgeTrump);
       System.out.println("フルハウスです");// デバッグ用
     } else if (AllTrump.Frash(JudgeTrump).size() == 5) {
-      // membermapper.insertRank(6);
+      rank = 6;
+      role = "フラッシュ";
       ReturnTrump = AllTrump.Frash(JudgeTrump);
       System.out.println("フラッシュです");// デバッグ用
     } else if (AllTrump.ResultStraight(AllTrump.Straight(JudgeTrump)).size() == 5) {
-      // membermapper.insertRank(5);
+      rank = 5;
+      role = "ストレート";
       ReturnTrump = AllTrump.ResultStraight(AllTrump.Straight(JudgeTrump));
       System.out.println("ストレートです");// デバッグ用
     } else if (AllTrump.ThreeCard(JudgeTrump).size() == 3) {
-      // membermapper.insertRank(4);
+      rank = 4;
+      role = "スリーカード";
       ReturnTrump = AllTrump.ThreeCard(JudgeTrump);
       System.out.println("スリーカードです");// デバッグ用
     } else if (AllTrump.TwoPair(JudgeTrump).size() == 4) {
-      // membermapper.insertRank(3);//デバッグ用
+      rank = 3;
+      role = "ツーペア";
       ReturnTrump = AllTrump.TwoPair(JudgeTrump);
       System.out.println("ツーペアです");// デバッグ用
     } else if (AllTrump.OnePair(JudgeTrump).size() == 2) {
-      // membermapper.insertRank(2);
+      rank = 2;
+      role = "ワンペア";
       ReturnTrump = AllTrump.OnePair(JudgeTrump);
       System.out.println("ワンペアです");// デバッグ用
     } else {
-      // membermapper.insertRank(1);
+      role = "ノーペア";
       ReturnTrump = AllTrump.noHand(JudgeTrump);
       System.out.println("ノーペアです");// デバッグ用
     }
@@ -293,7 +305,7 @@ public class CardgameController {
     userresultmapper.insertResult(id, login_name, ReturnTrump.get(0).getNumber(), ReturnTrump.get(0).getSuit(),
         ReturnTrump.get(1).getNumber(), ReturnTrump.get(1).getSuit(), ReturnTrump.get(2).getNumber(),
         ReturnTrump.get(2).getSuit(), ReturnTrump.get(3).getNumber(), ReturnTrump.get(3).getSuit(),
-        ReturnTrump.get(4).getNumber(), ReturnTrump.get(4).getSuit());
+        ReturnTrump.get(4).getNumber(), ReturnTrump.get(4).getSuit(), rank, role);
 
     // update
     membermapper.updateByexist4T(member);

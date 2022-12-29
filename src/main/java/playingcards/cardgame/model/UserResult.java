@@ -13,6 +13,8 @@ public class UserResult {
   String ts4;
   String tn5;
   String ts5;
+  int rank;
+  String roleName;
 
   public UserResult() {
 
@@ -114,4 +116,19 @@ public class UserResult {
     this.ts5 = ts5;
   }
 
+  public String getRoleName() {
+    return roleName;
+  }
+
+  public void setRoleName(String roleName) {
+    this.roleName = roleName;
+  }
+
+  public int getRank() {
+    return rank;
+  }
+
+  public void setRank(int rank) {
+    this.rank = rank;
+  }
 }

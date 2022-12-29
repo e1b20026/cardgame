@@ -9,7 +9,7 @@ public class Member {
   boolean exist3;
   boolean exist4;
   boolean result;
-  int rank;
+
 
   // Thymeleafでフィールドを扱うためにはgetter/setterが必ず必要
   // vscodeのソースコード右クリック->ソースアクションでsetter/getterを簡単に追加できる
@@ -79,13 +79,7 @@ public class Member {
     this.id = id;
   }
 
-  public int getRank() {
-    return rank;
-  }
 
-  public void setRank(int rank) {
-    this.rank = rank;
-  }
 
   public boolean getResult() {
     return result;
@@ -94,5 +88,7 @@ public class Member {
   public void setResult(boolean result) {
     this.result = result;
   }
+
+
 
 }
