@@ -11,7 +11,7 @@
       sse.onmessage = function (event) {
         console.log(event.data);
         if (event.data == 4) {
-          document.getElementById("result").textContent = "ゲーム終了"
+          document.getElementById("result").textContent = "最終結果"
           document.getElementById("room_incomplete").textContent = event.data + "/4";
         }
         else {

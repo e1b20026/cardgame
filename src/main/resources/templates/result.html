@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Cardgame</title>
+  <link rel="stylesheet" href="../css/stylesheet.css">
   <script>
     window.onload = function () {
       var sse = new EventSource('/Room/sendresult');
@@ -11,11 +12,11 @@
         console.log(event.data);
         if (event.data == 4) {
           document.getElementById("result_complete").textContent = "ゲーム終了"
-          document.getElementById("result_incomplete").textContent = "終了した参加人数は：" + event.data;
+          document.getElementById("result_incomplete").textContent = event.data + "/4";
         }
         else {
           //操作対象のDOMを取得
-          document.getElementById("result_incomplete").textContent = "終了した参加人数は：" + event.data;//ノードの追加
+          document.getElementById("result_incomplete").textContent = event.data + "/4";//ノードの追加
         }
       }
     }
@@ -24,20 +25,43 @@
 </head>
 
 <body>
-  結果画面です
-  <div th:if="${resultTrump}">
-    <div th:each="trump, stat:${resultTrump}">
-      [[${trump.id}]]:
-      [[${trump.username}]]:
-      [[${trump.tn1}]]:[[${trump.ts1}]]
-      [[${trump.tn2}]]:[[${trump.ts2}]]
-      [[${trump.tn3}]]:[[${trump.ts3}]]
-      [[${trump.tn4}]]:[[${trump.ts4}]]
-      [[${trump.tn5}]]:[[${trump.ts5}]]
+  <div class="result-page porker-bg">
+    <div class="final-ranking-list">
+      <table class="final-player-table">
+        <tr>
+          <th class="rank-title">ランキング</th>
+          <th class="guest-title">ゲスト名</th>
+          <th class="myTrump-title">手役</th>
+          <th class="Role-title">手役名</th>
+        </tr>
+        <div th:if="${resultTrump}">
+          <div th:each="trump, stat:${resultTrump}">
+            <tr class="rank-list">
+              <td class="ranking">[[${stat.count}]]</td>
+              <td class="user-name">[[${trump.username}]]</td>
+              <td>
+                <div class="final-trump-list">
+                  <img class="final-trump" th:src="@{'../img/' + ${trump.ts1} + ${trump.tn1} + '.png'}">
+                  <img class="final-trump" th:src="@{'../img/' + ${trump.ts2} + ${trump.tn2} + '.png'}">
+                  <img class="final-trump" th:src="@{'../img/' + ${trump.ts3} + ${trump.tn3} + '.png'}">
+                  <img class="final-trump" th:src="@{'../img/' + ${trump.ts4} + ${trump.tn4} + '.png'}">
+                  <img class="final-trump" th:src="@{'../img/' + ${trump.ts5} + ${trump.tn5} + '.png'}">
+                </div>
+              </td>
+              <td class="role-name">ワンペア(テスト用)</td>
+            </tr>
+          </div>
+        </div>
+      </table>
+    </div>
+    <div class="result-button-area">
+      <a id="result_complete" href="/Room/rule" class="circle-bg result-link-button circle-btn"></a>
+      <div class="player-count-show circle-bg">
+        <h1 id="result_incomplete" class="up"></h1>
+        <p class="down">接続人数</p>
+      </div>
     </div>
   </div>
-  <h1 id="result_incomplete"></h1>
-  <a id="result_complete" href="/Room/rule"></a>
 </body>
 
 </html>
