@@ -13,11 +13,11 @@
         if (event.data == 4) {
           document.getElementById("check").textContent = "チェック";
           document.getElementById("fold").textContent = "フォールド";
-          document.getElementById("room_incomplete").textContent = event.data;
+          document.getElementById("room_incomplete").textContent = event.data + "/4";
         }
         else {
           //操作対象のDOMを取得
-          document.getElementById("room_incomplete").textContent = event.data;//ノードの追加
+          document.getElementById("room_incomplete").textContent = event.data + "/4";//ノードの追加
         }
       }
     }
