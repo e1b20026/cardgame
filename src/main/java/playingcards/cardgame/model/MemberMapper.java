@@ -58,4 +58,8 @@ public interface MemberMapper {
 
   @Update("UPDATE member SET result = true WHERE id = #{id}")
   void updateByresultT(Member member);
+
+
+
+
 }
