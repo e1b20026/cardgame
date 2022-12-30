@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Cardgame</title>
+  <link rel="stylesheet" href="../css/stylesheet.css">
   <script>
     window.onload = function () {
       var sse = new EventSource('/Room/exist');
@@ -11,11 +12,12 @@
         console.log(event.data);
         if (event.data == 4) {
           document.getElementById("room_complete").textContent = "ゲーム開始"
-          document.getElementById("room_incomplete").textContent = "現在の参加人数は：" + event.data;
+          document.getElementById("change-wait-title").textContent = "START!!!";
         }
         else {
           //操作対象のDOMを取得
-          document.getElementById("room_incomplete").textContent = "現在の参加人数は：" + event.data;//ノードの追加
+          document.getElementById("room_incomplete").textContent = event.data + "/4";
+          document.getElementById("change-wait-title").textContent = "WAITING...";//ノードの追加
         }
       }
     }
@@ -24,9 +26,16 @@
 </head>
 
 <body>
-  ここはroom1です
-  <h1 id="room_incomplete"></h1>
-  <a id="room_complete" href="/Room/round1"></a>
+  <div class="room-page">
+    <h1 class="wait-title ja">待機場</h1>
+    <h1 id="change-wait-title" class="wait-title en"></h1>
+    <div class="player-count-show wait-circle-bg">
+      <a id="room_complete" class="wait-button" href="/Room/round1"></a>
+      <h1 id="room_incomplete" class="wait-up"></h1>
+      <p class="wait-down">募集中</p>
+    </div>
+
+  </div>
 </body>
 
 </html>
