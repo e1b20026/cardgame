@@ -120,7 +120,6 @@ li {
   position: relative;
   top: 25px;
   height: 10px;
-  opacity: 0;
 }
 
 
@@ -141,14 +140,20 @@ li {
 }
 
 .wait-place {
+  display: inline-block;
+  color: black;
+  height: 50px;
+  line-height: 50px;
   width: 280px;
   padding: 0 20px;
   margin: 0 20px;
   margin-top: 20px;
+  background-color: white;
 }
 
 
 .wait-place-link {
+  color: black;
   text-align: center;
 }
 
