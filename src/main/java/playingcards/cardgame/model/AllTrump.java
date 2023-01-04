@@ -258,7 +258,8 @@ public class AllTrump {
       if (pairCount == 2) {
         break;
       }
-      if (i != trump.size() - 1 && trump.get(i).evaluationNumber == trump.get(i + 1).evaluationNumber) {
+      if (i != trump.size() - 1 && trump.get(i).evaluationNumber != 1
+          && trump.get(i).evaluationNumber == trump.get(i + 1).evaluationNumber) {
         twoPair.add(trump.get(i));
         twoPair.add(trump.get(i + 1));
         i++;
