@@ -347,8 +347,8 @@ public class CardgameController {
 
   @GetMapping("/record")
   public String record(Principal prin, ModelMap model) {
-    
-    return "result.html";
+
+    return "postRecord.html";
   }
 
   @GetMapping("/exist")
