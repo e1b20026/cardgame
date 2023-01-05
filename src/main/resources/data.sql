@@ -64,3 +64,14 @@ INSERT INTO randtrump (id) VALUES (2);
 INSERT INTO randtrump (id) VALUES (3);
 INSERT INTO randtrump (id) VALUES (4);
 INSERT INTO randtrump (id) VALUES (5);
+
+INSERT INTO postrecord (id, count) VALUES (1, 0);
+INSERT INTO postrecord (id, count) VALUES (2, 0);
+INSERT INTO postrecord (id, count) VALUES (3, 0);
+INSERT INTO postrecord (id, count) VALUES (4, 0);
+INSERT INTO postrecord (id, count) VALUES (5, 0);
+INSERT INTO postrecord (id, count) VALUES (6, 0);
+INSERT INTO postrecord (id, count) VALUES (7, 0);
+INSERT INTO postrecord (id, count) VALUES (8, 0);
+INSERT INTO postrecord (id, count) VALUES (9, 0);
+INSERT INTO postrecord (id, count) VALUES (10, 0);

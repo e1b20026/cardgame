@@ -40,3 +40,9 @@ CREATE TABLE userresult (
   roleName VARCHAR,
   primary key(id)
 );
+
+CREATE TABLE postrecord (
+  id INT,
+  count INT,
+  primary key(id)
+);
