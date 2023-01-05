@@ -43,6 +43,7 @@ CREATE TABLE userresult (
 
 CREATE TABLE postrecord (
   id INT,
+  roleName VARCHAR,
   count INT,
   primary key(id)
 );

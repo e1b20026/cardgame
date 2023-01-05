@@ -2,6 +2,7 @@ package playingcards.cardgame.model;
 
 public class PostRecord {
   int id;
+  String roleName;
   int count;
 
   public PostRecord() {
@@ -24,4 +25,11 @@ public class PostRecord {
     this.count = count;
   }
 
+  public String getRoleName() {
+    return roleName;
+  }
+
+  public void setRoleName(String roleName) {
+    this.roleName = roleName;
+  }
 }
