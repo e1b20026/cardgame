@@ -345,6 +345,12 @@ public class CardgameController {
     return "result.html";
   }
 
+  @GetMapping("/record")
+  public String record(Principal prin, ModelMap model) {
+
+    return "postRecord.html";
+  }
+
   @GetMapping("/exist")
   public SseEmitter showexist() {
     // infoレベルでログを出力する
