@@ -565,3 +565,8 @@ li {
 .result-link-button:empty {
   visibility: hidden;
 }
+
+/* postrecordページ */
+.postrecord-page {
+  min-height: 100vh;
+}

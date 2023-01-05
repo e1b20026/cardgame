@@ -8,20 +8,21 @@
 </head>
 
 <body>
-
-  <table border="1">
-    <tr>
-      <th>手役名</th>
-      <th>出現回数</th>
-    </tr>
-    <div th:each="record, stat:${records}">
+  <div class="postrecord-page porker-bg">
+    <table border="1">
       <tr>
-        <td>[[${record.roleName}]]</td>
-        <td>[[${record.count}]]</td>
+        <th>手役名</th>
+        <th>出現回数</th>
       </tr>
-    </div>
-  </table>
+      <div th:each="record, stat:${records}">
+        <tr>
+          <td>[[${record.roleName}]]</td>
+          <td>[[${record.count}]]</td>
+        </tr>
+      </div>
+    </table>
 
+  </div>
 </body>
 
 </html>
