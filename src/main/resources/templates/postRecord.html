@@ -9,6 +9,10 @@
 
 <body>
   こんにちは
+  <div th:each="record, stat:${records}">
+    [[${record.count}]]
+
+  </div>
 
 </body>
 
