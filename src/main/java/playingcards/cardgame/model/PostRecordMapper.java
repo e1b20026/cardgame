@@ -15,5 +15,8 @@ public interface PostRecordMapper {
   ArrayList<PostRecord> selectAllPostRecord();
 
   @Select("select * from PostRecord where id = #{id}")
-  ArrayList<PostRecord> selectIdPostRecord(int id);
+  PostRecord selectIdPostRecord(int id);
+
+  @Update("UPDATE PostRecord SET count = #{count} where id = #{id}")
+  void updateCountPostRecord(int count, int id);
 }
