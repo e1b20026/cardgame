@@ -47,6 +47,9 @@ public class CardgameController {
   @Autowired
   private AsyncCard User;
 
+  @Autowired
+  PostRecordMapper postrecordmapper;
+
   private final Logger logger = LoggerFactory.getLogger(CardgameController.class);
 
   @GetMapping("/rule")
@@ -306,6 +309,11 @@ public class CardgameController {
         ReturnTrump.get(1).getNumber(), ReturnTrump.get(1).getSuit(), ReturnTrump.get(2).getNumber(),
         ReturnTrump.get(2).getSuit(), ReturnTrump.get(3).getNumber(), ReturnTrump.get(3).getSuit(),
         ReturnTrump.get(4).getNumber(), ReturnTrump.get(4).getSuit(), rank, role);
+
+    PostRecord record = postrecordmapper.selectIdPostRecord(rank);
+    int count = record.getCount();
+    count++;
+    postrecordmapper.updateCountPostRecord(count, rank);
 
     // update
     membermapper.updateByexist4T(member);
