@@ -346,8 +346,9 @@ public class CardgameController {
   }
 
   @GetMapping("/record")
-  public String record(Principal prin, ModelMap model) {
-
+  public String record(ModelMap model) {
+    ArrayList<PostRecord> records = postrecordmapper.selectAllPostRecord();
+    model.addAttribute("records", records);
     return "postRecord.html";
   }
 
