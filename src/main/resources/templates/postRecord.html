@@ -8,12 +8,25 @@
 </head>
 
 <body>
-  こんにちは
-  <div th:each="record, stat:${records}">
-    [[${record.count}]]
-
+  <div class="postrecord-page porker-bg">
+    <div class="table-area">
+      <table class="record-table" border="1">
+        <tr>
+          <th>手役名</th>
+          <th>出現回数</th>
+        </tr>
+        <div th:each="record, stat:${records}">
+          <tr>
+            <td>[[${record.roleName}]]</td>
+            <td>[[${record.count}]]</td>
+          </tr>
+        </div>
+      </table>
+    </div>
+    <div class="record-button">
+      <a href="/Room/rule" class="circle-bg result-link-button circle-btn">ゲーム終了</a>
+    </div>
   </div>
-
 </body>
 
 </html>

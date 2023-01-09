@@ -11,7 +11,7 @@
       sse.onmessage = function (event) {
         console.log(event.data);
         if (event.data == 4) {
-          document.getElementById("result_complete").textContent = "ゲーム終了"
+          document.getElementById("result_complete").textContent = "過去成績"
           document.getElementById("result_incomplete").textContent = event.data + "/4";
         }
         else {
