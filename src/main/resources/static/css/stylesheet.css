@@ -569,6 +569,10 @@ li {
 /* postrecordページ */
 .postrecord-page {
   min-height: 100vh;
+
+}
+
+.table-area {
   padding-top: 80px;
 }
 
@@ -578,6 +582,7 @@ li {
   margin: 0 auto;
   border-collapse: collapse;
   border: 1px solid black;
+
 }
 
 .record-table th {
@@ -587,4 +592,10 @@ li {
 .record-table td {
   border: 1px solid black;
   padding: 0 10px;
+}
+
+.record-button {
+  display: flex;
+  justify-content: end;
+  margin-right: 40px;
 }
