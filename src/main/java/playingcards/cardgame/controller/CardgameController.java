@@ -346,10 +346,11 @@ public class CardgameController {
   }
 
   @GetMapping("/gamewait")
-  public String gamewait(ModelMap model) {
-
-    //model.addAttribute("resultTrump", resultTrump);
-    return "result.html";
+  public String gamewait(ModelMap model, Principal prin) {
+    String name = prin.getName();
+    Member member = membermapper.selectNameMember(name);
+    membermapper.updateByresultT(member);
+    return "gamewait.html";
   }
 
   @GetMapping("/record")

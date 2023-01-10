@@ -174,8 +174,7 @@ public class AsyncCard {
         }
       }
       emitter.send(count);
-      emitter.send(members);
-      
+
       // sendによってcountがブラウザにpushされる
       // 1秒STOP
       TimeUnit.SECONDS.sleep(1);

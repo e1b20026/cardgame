@@ -7,17 +7,16 @@
   <link rel="stylesheet" href="../css/stylesheet.css">
   <script>
     window.onload = function () {
-      var sse = new EventSource('/Room/exist');
+      var sse = new EventSource('/Room/sendresult');
       sse.onmessage = function (event) {
         console.log(event.data);
         if (event.data == 4) {
-          document.getElementById("room_complete").textContent = "ゲーム開始"
-          document.getElementById("change-wait-title").textContent = "START!!!";
+          document.getElementById("room_incomplete").textContent = event.data + "/4";
+          document.getElementById("result_button").textContent = "最終結果";
         }
         else {
           //操作対象のDOMを取得
           document.getElementById("room_incomplete").textContent = event.data + "/4";
-          document.getElementById("change-wait-title").textContent = "WAITING...";//ノードの追加
         }
       }
     }
@@ -28,7 +27,11 @@
 <body>
   <div class="gamewait-page porker-bg">
     <h1>他のプレーヤーがゲーム終了するまでこちらでおまちください</h1>
-    <a href="/Room/result"></a>
+    <div class="player-count-show circle-bg">
+      <h1 id="room_incomplete" class="up"></h1>
+      <p class="down">接続人数</p>
+    </div>
+    <a id="result_button" href="/Room/result"></a>
   </div>
 </body>
 
