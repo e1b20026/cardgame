@@ -345,6 +345,13 @@ public class CardgameController {
     return "result.html";
   }
 
+  @GetMapping("/gamewait")
+  public String gamewait(ModelMap model) {
+
+    //model.addAttribute("resultTrump", resultTrump);
+    return "result.html";
+  }
+
   @GetMapping("/record")
   public String record(ModelMap model, Principal prin) {
     String login_name = prin.getName();

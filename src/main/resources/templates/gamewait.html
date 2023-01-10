@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>Cardgame</title>
+  <link rel="stylesheet" href="../css/stylesheet.css">
+  <script>
+    window.onload = function () {
+      var sse = new EventSource('/Room/exist');
+      sse.onmessage = function (event) {
+        console.log(event.data);
+        if (event.data == 4) {
+          document.getElementById("room_complete").textContent = "ゲーム開始"
+          document.getElementById("change-wait-title").textContent = "START!!!";
+        }
+        else {
+          //操作対象のDOMを取得
+          document.getElementById("room_incomplete").textContent = event.data + "/4";
+          document.getElementById("change-wait-title").textContent = "WAITING...";//ノードの追加
+        }
+      }
+    }
+
+  </script>
+</head>
+
+<body>
+  <div class="gamewait-page porker-bg">
+    <h1>他のプレーヤーがゲーム終了するまでこちらでおまちください</h1>
+    <a href="/Room/result"></a>
+  </div>
+</body>
+
+</html>
