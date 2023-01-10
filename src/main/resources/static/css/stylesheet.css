@@ -599,3 +599,19 @@ li {
   justify-content: end;
   margin-right: 40px;
 }
+
+/* gamewait.html */
+.gamewait-page {
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+#result_button {
+  display: inline-block;
+  width: 300px;
+}
+
+.gamewait-circle-bg {
+  width: 300px;
+  height: 300px;
+}
