@@ -346,7 +346,12 @@ public class CardgameController {
   }
 
   @GetMapping("/record")
-  public String record(ModelMap model) {
+  public String record(ModelMap model, Principal prin) {
+    String login_name = prin.getName();
+    Member member = membermapper.selectNameMember(login_name);
+    // 各existカラムの初期化
+    membermapper.updateByexistF(member);
+
     ArrayList<PostRecord> records = postrecordmapper.selectAllPostRecord();
     model.addAttribute("records", records);
     return "postRecord.html";
