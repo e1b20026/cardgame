@@ -599,3 +599,49 @@ li {
   justify-content: end;
   margin-right: 40px;
 }
+
+/* gamewait.html */
+.gamewait-page {
+  min-height: 100vh;
+  text-align: center;
+}
+
+#result_button {
+  display: inline-block;
+  width: 300px;
+}
+
+.gamewait-circle-bg {
+  width: 200px;
+  height: 200px;
+  font-size: 30px;
+  margin: 30px auto 0;
+}
+
+.gamewait-page h1 {
+  padding-top: 20px;
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.result-button-gamewait {
+  margin-top: 30px;
+  border-radius: 50px;
+}
+
+.gamewait-up {
+  position: relative;
+  font-size: 40px;
+  color: white;
+  font-weight: bold;
+  top: 40px;
+}
+
+.gamewait-down {
+  position: relative;
+  top: 30px;
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>Cardgame</title>
+  <link rel="stylesheet" href="../css/stylesheet.css">
+  <script>
+    window.onload = function () {
+      var sse = new EventSource('/Room/sendresult');
+      sse.onmessage = function (event) {
+        console.log(event.data);
+        if (event.data == 4) {
+          document.getElementById("room_incomplete").textContent = event.data + "/4";
+          document.getElementById("result_button").textContent = "最終結果";
+        }
+        else {
+          //操作対象のDOMを取得
+          document.getElementById("room_incomplete").textContent = event.data + "/4";
+        }
+      }
+    }
+
+  </script>
+</head>
+
+<body>
+  <div class="gamewait-page porker-bg">
+    <h1>他のプレーヤーがゲーム終了するまで<br />こちらでおまちください</h1>
+    <div class="circle-bg gamewait-circle-bg">
+      <h2 id="room_incomplete" class="gamewait-up"></h2>
+      <p class="gamewait-down">ゲーム終了</p>
+    </div>
+    <a id="result_button" class="circle-bg circle-btn result-button-right result-button-gamewait" href=" /Room/result"></a>
+  </div>
+</body>
+
+</html>

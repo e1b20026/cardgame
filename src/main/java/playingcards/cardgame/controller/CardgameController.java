@@ -345,6 +345,14 @@ public class CardgameController {
     return "result.html";
   }
 
+  @GetMapping("/gamewait")
+  public String gamewait(ModelMap model, Principal prin) {
+    String name = prin.getName();
+    Member member = membermapper.selectNameMember(name);
+    membermapper.updateByresultT(member);
+    return "gamewait.html";
+  }
+
   @GetMapping("/record")
   public String record(ModelMap model, Principal prin) {
     String login_name = prin.getName();
