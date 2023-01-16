@@ -1,4 +1,4 @@
 #### セットアップマニュアルへのリンク
-https://github.com/e1b20026/cardgame/blob/main/SetupManual.md
+https://github.com/e1b20026/cardgame/blob/main/docs/SetupManual.md
 #### ユーザマニュアルへのリンク
-https://github.com/e1b20026/cardgame/blob/main/UserManual.md
+https://github.com/e1b20026/cardgame/blob/main/docs/UserManual.md
